@@ -1,0 +1,155 @@
+name: Kotlin migration equivalence
+
+on:
+  pull_request:
+    branches: [develop]
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kotlin-migration-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  migration-equivalence:
+    name: Java baseline vs Kotlin candidate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      BASELINE_SHA: 2b017679254ee77030d4a798ecc034a532eb8d0b
+      MAVEN_OPTS: -Xmx1024m
+      JAVA_TOOL_OPTIONS: -Xmx1024m
+      MIGRATION_ARTIFACT_ROOT: migration-artifacts
+      # Allows at most 576 pixels at 1280x900 for caret/focus rasterization only.
+      MIGRATION_IMAGE_MAX_DIFF_RATIO: '0.0005'
+      MIGRATION_IMAGE_PIXEL_THRESHOLD: '0'
+
+    steps:
+      - name: Check out Kotlin candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+
+      - name: Check out fixed Java baseline
+        uses: actions/checkout@v4
+        with:
+          ref: 2b017679254ee77030d4a798ecc034a532eb8d0b
+          path: baseline
+
+      - name: Verify fixed baseline identity
+        working-directory: baseline
+        run: |
+          test "$(git rev-parse HEAD)" = "$BASELINE_SHA"
+          test -f package-lock.json
+          test -f docs/e2e/specification.yaml
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: |
+            baseline/package-lock.json
+            candidate/package-lock.json
+
+      - name: Install baseline Node.js dependencies
+        working-directory: baseline
+        run: npm ci
+
+      - name: Install candidate Node.js dependencies
+        working-directory: candidate
+        run: npm ci
+
+      - name: Require identical Playwright versions
+        run: |
+          baseline_version=$(node -p "require('./baseline/node_modules/@playwright/test/package.json').version")
+          candidate_version=$(node -p "require('./candidate/node_modules/@playwright/test/package.json').version")
+          test "$baseline_version" = "$candidate_version"
+
+      - name: Install fixed Chromium and system dependencies
+        working-directory: baseline
+        run: npx playwright install --with-deps chromium
+
+      - name: Verify Java baseline with Maven
+        working-directory: baseline
+        run: ./mvnw -B verify
+
+      - name: Verify Java baseline with Playwright E2E
+        working-directory: baseline
+        env:
+          E2E_RUN_ID: baseline-${{ github.run_id }}
+          NODE_OPTIONS: --require=${{ github.workspace }}/candidate/e2e/migration/deterministic-uuid.cjs
+        run: |
+          cp ../candidate/playwright.migration.config.ts playwright.migration.config.ts
+          npx playwright test --config=playwright.migration.config.ts
+          npm run e2e:check-coverage
+          npm run e2e:check-evidence
+
+      - name: Preserve immutable baseline evidence
+        run: |
+          test -d baseline/target/surefire-reports
+          test -s baseline/e2e/evidence/latest.json
+          mkdir -p candidate/migration-artifacts/baseline/junit
+          cp -R baseline/target/surefire-reports candidate/migration-artifacts/baseline/junit/surefire-reports
+          if test -d baseline/target/failsafe-reports; then
+            cp -R baseline/target/failsafe-reports candidate/migration-artifacts/baseline/junit/failsafe-reports
+          fi
+          mkdir -p candidate/migration-artifacts/baseline/e2e
+          cp -R baseline/e2e/evidence/. candidate/migration-artifacts/baseline/e2e/
+          test -s candidate/migration-artifacts/baseline/e2e/latest.json
+          test "$(find candidate/migration-artifacts/baseline/junit -name 'TEST-*.xml' -type f | wc -l)" -gt 0
+
+      - name: Verify Kotlin candidate with Maven
+        working-directory: candidate
+        run: ./mvnw -B verify
+
+      - name: Verify Kotlin candidate with Playwright E2E
+        working-directory: candidate
+        env:
+          E2E_RUN_ID: candidate-${{ github.run_id }}
+          NODE_OPTIONS: --require=${{ github.workspace }}/candidate/e2e/migration/deterministic-uuid.cjs
+        run: |
+          npx playwright test --config=playwright.migration.config.ts
+          npm run e2e:check-coverage
+          npm run e2e:check-evidence
+
+      - name: Preserve candidate E2E evidence
+        run: |
+          test -s candidate/e2e/evidence/latest.json
+          mkdir -p candidate/migration-artifacts/candidate/e2e
+          cp -R candidate/e2e/evidence/. candidate/migration-artifacts/candidate/e2e/
+          test -s candidate/migration-artifacts/candidate/e2e/latest.json
+
+      - name: Test migration validators with negative fixtures
+        working-directory: candidate
+        run: npm run migration:test-validators
+
+      - name: Run complete migration verification
+        working-directory: candidate
+        run: npm run migration:verify
+
+      - name: Upload equivalence evidence and reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kotlin-migration-equivalence-${{ github.run_id }}
+          path: |
+            candidate/migration-artifacts/
+            candidate/e2e/evidence/
+            candidate/target/surefire-reports/
+            candidate/target/failsafe-reports/
+            baseline/e2e/evidence/
+            baseline/target/surefire-reports/
+            baseline/target/failsafe-reports/
+          if-no-files-found: error
+          retention-days: 14

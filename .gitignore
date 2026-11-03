@@ -51,5 +51,6 @@ _site/
 node_modules/
 e2e/evidence/
 e2e/discovery-artifacts/
+migration-artifacts/
 playwright-report/
 test-results/
