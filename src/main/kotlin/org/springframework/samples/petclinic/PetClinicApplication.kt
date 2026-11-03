@@ -13,4 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic;
+
+package org.springframework.samples.petclinic
+
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.context.annotation.ImportRuntimeHints
+
+/** PetClinic Spring Boot Application. */
+@SpringBootApplication
+@ImportRuntimeHints(PetClinicRuntimeHints::class)
+open class PetClinicApplication {
+
+    companion object {
+
+        @JvmStatic
+        fun main(args: Array<String>) {
+            SpringApplication.run(PetClinicApplication::class.java, *args)
+        }
+    }
+}

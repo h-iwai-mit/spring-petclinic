@@ -14,23 +14,24 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic;
+package org.springframework.samples.petclinic.model
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ImportRuntimeHints;
+import jakarta.persistence.Column
+import jakarta.persistence.MappedSuperclass
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.Size
 
-/**
- * PetClinic Spring Boot Application.
- *
- * @author Dave Syer
- */
-@SpringBootApplication
-@ImportRuntimeHints(PetClinicRuntimeHints.class)
-public class PetClinicApplication {
+/** Simple JavaBean domain object representing a person. */
+@MappedSuperclass
+open class Person : BaseEntity() {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PetClinicApplication.class, args);
-	}
+    @field:Column(length = 30)
+    @field:Size(max = 30)
+    @field:NotBlank
+    var firstName: String? = null
 
+    @field:Column(length = 30)
+    @field:Size(max = 30)
+    @field:NotBlank
+    var lastName: String? = null
 }
