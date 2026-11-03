@@ -16,6 +16,12 @@ export const json = (path: string) => JSON.parse(readFileSync(path, 'utf8'));
 export const loadSpec = (): Spec => YAML.parse(readFileSync('docs/e2e/specification.yaml', 'utf8'));
 export const discoveries = (): Discovery[] => readdirSync('docs/e2e').filter(f => /^discovery-.*\.json$/.test(f))
   .flatMap(f => json(join('docs/e2e', f)).actions);
+function sourceExists(ref: string): boolean {
+  const path = ref.split(':')[0];
+  if (existsSync(path)) return true;
+  const kotlinPath = path.replace(/^src\/main\/java\//, 'src/main/kotlin/').replace(/\.java$/, '.kt');
+  return kotlinPath !== path && existsSync(kotlinPath);
+}
 export function markdown(spec: Spec): string {
   const cell = (value: unknown) => (Array.isArray(value) ? value.join('; ') : String(value)).replace(/\|/g, '\\|').replace(/\n/g, '<br>');
   return '<!-- Generated from specification.yaml. Do not edit. -->\n# E2E試験仕様書\n\n' +
@@ -42,7 +48,7 @@ export function validateSpec(spec: Spec, found: Discovery[], model: Model): stri
   for (const d of found) {
     if (!pages.has(d.pageId)) errors.push(`Unknown discovery page ${d.pageId}`);
     if (!d.sourceRefs.length) errors.push(`Missing discovery source ${d.discoveryId}`);
-    for (const ref of d.sourceRefs) if (ref.startsWith('src/') && !existsSync(ref.split(':')[0])) errors.push(`Missing source file ${ref}`);
+    for (const ref of d.sourceRefs) if (ref.startsWith('src/') && !sourceExists(ref)) errors.push(`Missing source file ${ref}`);
     if (d.classification === 'incomplete' || !['target', 'excluded'].includes(d.classification)) errors.push(`Unclassified ${d.discoveryId}`);
     if (d.classification === 'excluded' && !d.reason?.trim()) errors.push(`Missing exclusion reason ${d.discoveryId}`);
   }

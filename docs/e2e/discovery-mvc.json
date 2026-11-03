@@ -48,7 +48,7 @@
       "pageId": "home",
       "label": "Open home",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/system/WelcomeController.java:welcome"
+        "src/main/kotlin/org/springframework/samples/petclinic/system/WelcomeController.kt:welcome"
       ],
       "method": "GET",
       "url": "/",
@@ -60,7 +60,7 @@
       "pageId": "owner-search",
       "label": "Open owner search",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:initFindForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:initFindForm"
       ],
       "method": "GET",
       "url": "/owners/find",
@@ -72,7 +72,7 @@
       "pageId": "owner-search",
       "label": "Find one owner",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processFindForm"
       ],
       "method": "GET",
       "url": "/owners?lastName=Franklin",
@@ -84,7 +84,7 @@
       "pageId": "owner-search",
       "label": "Find multiple owners",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processFindForm"
       ],
       "method": "GET",
       "url": "/owners?lastName=Davis",
@@ -96,7 +96,7 @@
       "pageId": "owner-search",
       "label": "Find no owners",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processFindForm"
       ],
       "method": "GET",
       "url": "/owners?lastName=NoSuchOwner",
@@ -108,7 +108,7 @@
       "pageId": "owner-search",
       "label": "Find all owners with empty query",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processFindForm"
       ],
       "method": "GET",
       "url": "/owners?lastName=",
@@ -120,7 +120,7 @@
       "pageId": "owner-search",
       "label": "Find all owners with omitted query",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processFindForm"
       ],
       "method": "GET",
       "url": "/owners",
@@ -132,7 +132,7 @@
       "pageId": "owner-search",
       "label": "Trim search whitespace",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processFindForm"
       ],
       "method": "GET",
       "url": "/owners?lastName=%20Franklin%20",
@@ -144,8 +144,8 @@
       "pageId": "owner-list",
       "label": "Owner pagination",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:addPaginationModel",
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:findPaginatedForOwnersLastName"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:addPaginationModel",
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:findPaginatedForOwnersLastName"
       ],
       "method": "GET",
       "url": "/owners?page=2",
@@ -157,7 +157,7 @@
       "pageId": "owner-list",
       "label": "Owner low page redirect",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processFindForm"
       ],
       "method": "GET",
       "url": "/owners?page=0",
@@ -169,7 +169,7 @@
       "pageId": "owner-list",
       "label": "Owner high page redirect",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processFindForm"
       ],
       "method": "GET",
       "url": "/owners?page=99999",
@@ -181,7 +181,7 @@
       "pageId": "owner-form",
       "label": "Open create owner",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:initCreationForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:initCreationForm"
       ],
       "method": "GET",
       "url": "/owners/new",
@@ -193,7 +193,7 @@
       "pageId": "owner-form",
       "label": "Create owner",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processCreationForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processCreationForm"
       ],
       "method": "POST",
       "url": "/owners/new",
@@ -205,9 +205,9 @@
       "pageId": "owner-form",
       "label": "Reject blank owner fields",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/Owner.java:address,city,telephone",
-        "src/main/java/org/springframework/samples/petclinic/model/Person.java:firstName,lastName",
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processCreationForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/Owner.kt:address,city,telephone",
+        "src/main/kotlin/org/springframework/samples/petclinic/model/Person.kt:firstName,lastName",
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processCreationForm"
       ],
       "method": "POST",
       "url": "/owners/new",
@@ -219,8 +219,8 @@
       "pageId": "owner-form",
       "label": "Reject invalid telephone",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/Owner.java:telephone",
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processCreationForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/Owner.kt:telephone",
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processCreationForm"
       ],
       "method": "POST",
       "url": "/owners/new",
@@ -232,8 +232,8 @@
       "pageId": "owner-form",
       "label": "Reject oversized owner fields",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/Owner.java:address,city",
-        "src/main/java/org/springframework/samples/petclinic/model/Person.java:firstName,lastName"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/Owner.kt:address,city",
+        "src/main/kotlin/org/springframework/samples/petclinic/model/Person.kt:firstName,lastName"
       ],
       "method": "POST",
       "url": "/owners/new",
@@ -245,7 +245,7 @@
       "pageId": "owner-details",
       "label": "Open owner detail",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:showOwner"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:showOwner"
       ],
       "method": "GET",
       "url": "/owners/{ownerId}",
@@ -257,7 +257,7 @@
       "pageId": "owner-form",
       "label": "Open edit owner",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:initUpdateOwnerForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:initUpdateOwnerForm"
       ],
       "method": "GET",
       "url": "/owners/{ownerId}/edit",
@@ -269,7 +269,7 @@
       "pageId": "owner-form",
       "label": "Update owner",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processUpdateOwnerForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processUpdateOwnerForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/edit",
@@ -281,9 +281,9 @@
       "pageId": "owner-form",
       "label": "Reject invalid owner update",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processUpdateOwnerForm",
-        "src/main/java/org/springframework/samples/petclinic/owner/Owner.java:telephone",
-        "src/main/java/org/springframework/samples/petclinic/model/Person.java:firstName,lastName"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processUpdateOwnerForm",
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/Owner.kt:telephone",
+        "src/main/kotlin/org/springframework/samples/petclinic/model/Person.kt:firstName,lastName"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/edit",
@@ -295,7 +295,7 @@
       "pageId": "error",
       "label": "Missing owner",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:findOwner,showOwner"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:findOwner,showOwner"
       ],
       "method": "GET",
       "url": "/owners/2147483647",
@@ -307,7 +307,7 @@
       "pageId": "pet-form",
       "label": "Open create pet",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:initCreationForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt:initCreationForm"
       ],
       "method": "GET",
       "url": "/owners/{ownerId}/pets/new",
@@ -319,7 +319,7 @@
       "pageId": "pet-form",
       "label": "Create pet",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processCreationForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt:processCreationForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/new",
@@ -331,7 +331,7 @@
       "pageId": "pet-form",
       "label": "Reject blank pet fields",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetValidator.java:validate"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetValidator.kt:validate"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/new",
@@ -343,7 +343,7 @@
       "pageId": "pet-form",
       "label": "Reject oversized pet name",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetValidator.java:validate"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetValidator.kt:validate"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/new",
@@ -355,7 +355,7 @@
       "pageId": "pet-form",
       "label": "Reject duplicate pet name",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processCreationForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt:processCreationForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/new",
@@ -367,7 +367,7 @@
       "pageId": "pet-form",
       "label": "Reject future pet birthday",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processCreationForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt:processCreationForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/new",
@@ -379,7 +379,7 @@
       "pageId": "pet-form",
       "label": "Open edit pet",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:initUpdateForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt:initUpdateForm"
       ],
       "method": "GET",
       "url": "/owners/{ownerId}/pets/{petId}/edit",
@@ -391,7 +391,7 @@
       "pageId": "pet-form",
       "label": "Update pet",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processUpdateForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt:processUpdateForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/{petId}/edit",
@@ -403,8 +403,8 @@
       "pageId": "pet-form",
       "label": "Reject invalid pet update",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processUpdateForm",
-        "src/main/java/org/springframework/samples/petclinic/owner/PetValidator.java:validate"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt:processUpdateForm",
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetValidator.kt:validate"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/{petId}/edit",
@@ -416,7 +416,7 @@
       "pageId": "pet-form",
       "label": "Reject duplicate pet update",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processUpdateForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt:processUpdateForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/{petId}/edit",
@@ -428,7 +428,7 @@
       "pageId": "pet-form",
       "label": "Reject future birthday update",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processUpdateForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt:processUpdateForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/{petId}/edit",
@@ -440,7 +440,7 @@
       "pageId": "visit-form",
       "label": "Open visit form",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:initNewVisitForm,loadPetWithVisit,minVisitDate"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/VisitController.kt:initNewVisitForm,loadPetWithVisit,minVisitDate"
       ],
       "method": "GET",
       "url": "/owners/{ownerId}/pets/{petId}/visits/new",
@@ -452,7 +452,7 @@
       "pageId": "visit-form",
       "label": "Book visit",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:processNewVisitForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/VisitController.kt:processNewVisitForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/{petId}/visits/new",
@@ -464,8 +464,8 @@
       "pageId": "visit-form",
       "label": "Reject blank visit description",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/Visit.java:description",
-        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:processNewVisitForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/Visit.kt:description",
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/VisitController.kt:processNewVisitForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/{petId}/visits/new",
@@ -477,7 +477,7 @@
       "pageId": "visit-form",
       "label": "Reject oversized visit description",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/Visit.java:description"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/Visit.kt:description"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/{petId}/visits/new",
@@ -489,7 +489,7 @@
       "pageId": "visit-form",
       "label": "Reject past or today visit date",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:processNewVisitForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/VisitController.kt:processNewVisitForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/{petId}/visits/new",
@@ -501,7 +501,7 @@
       "pageId": "error",
       "label": "Missing pet for visit",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:loadPetWithVisit"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/VisitController.kt:loadPetWithVisit"
       ],
       "method": "GET",
       "url": "/owners/{ownerId}/pets/2147483647/visits/new",
@@ -513,7 +513,7 @@
       "pageId": "vets",
       "label": "Open veterinarian list",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/vet/VetController.java:showVetList"
+        "src/main/kotlin/org/springframework/samples/petclinic/vet/VetController.kt:showVetList"
       ],
       "method": "GET",
       "url": "/vets.html",
@@ -525,7 +525,7 @@
       "pageId": "vets",
       "label": "Veterinarian pagination",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/vet/VetController.java:showVetList,findPaginated"
+        "src/main/kotlin/org/springframework/samples/petclinic/vet/VetController.kt:showVetList,findPaginated"
       ],
       "method": "GET",
       "url": "/vets.html?page=2",
@@ -537,7 +537,7 @@
       "pageId": "vets",
       "label": "Veterinarian low page redirect",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/vet/VetController.java:showVetList"
+        "src/main/kotlin/org/springframework/samples/petclinic/vet/VetController.kt:showVetList"
       ],
       "method": "GET",
       "url": "/vets.html?page=0",
@@ -549,7 +549,7 @@
       "pageId": "vets",
       "label": "Veterinarian high page redirect",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/vet/VetController.java:showVetList"
+        "src/main/kotlin/org/springframework/samples/petclinic/vet/VetController.kt:showVetList"
       ],
       "method": "GET",
       "url": "/vets.html?page=99999",
@@ -561,7 +561,7 @@
       "pageId": "error",
       "label": "Trigger showcase error",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/system/CrashController.java:triggerException"
+        "src/main/kotlin/org/springframework/samples/petclinic/system/CrashController.kt:triggerException"
       ],
       "method": "GET",
       "url": "/oups",
@@ -573,7 +573,7 @@
       "pageId": "vets-api",
       "label": "Veterinarian JSON representation",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/vet/VetController.java:showResourcesVetList"
+        "src/main/kotlin/org/springframework/samples/petclinic/vet/VetController.kt:showResourcesVetList"
       ],
       "method": "GET",
       "url": "/vets",
@@ -586,7 +586,7 @@
       "pageId": "owner-form",
       "label": "Owner ID mismatch defense",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processUpdateOwnerForm,setAllowedFields"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt:processUpdateOwnerForm,setAllowedFields"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/edit",
@@ -599,7 +599,7 @@
       "pageId": "pet-form",
       "label": "Database duplicate race fallback",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:isDuplicatePetNameViolation,processCreationForm,processUpdateForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt:isDuplicatePetNameViolation,processCreationForm,processUpdateForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/new",
@@ -612,9 +612,9 @@
       "pageId": "owner-details",
       "label": "Delete owner/pet/visit",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java",
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java",
-        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt",
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt",
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/VisitController.kt"
       ],
       "method": "DELETE",
       "url": "none",
@@ -627,7 +627,7 @@
       "pageId": "pet-form",
       "label": "Select missing pet type",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetValidator.java:validate"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetValidator.kt:validate"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/new",
@@ -640,7 +640,7 @@
       "pageId": "error",
       "label": "Missing pet edit",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:findPet,initUpdateForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt:findPet,initUpdateForm"
       ],
       "method": "GET",
       "url": "/owners/{ownerId}/pets/2147483647/edit",
@@ -652,8 +652,8 @@
       "pageId": "visit-form",
       "label": "Blank visit date",
       "sourceRefs": [
-        "src/main/java/org/springframework/samples/petclinic/owner/Visit.java:date",
-        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:processNewVisitForm"
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/Visit.kt:date",
+        "src/main/kotlin/org/springframework/samples/petclinic/owner/VisitController.kt:processNewVisitForm"
       ],
       "method": "POST",
       "url": "/owners/{ownerId}/pets/{petId}/visits/new",

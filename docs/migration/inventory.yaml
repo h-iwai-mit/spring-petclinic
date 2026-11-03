@@ -4,8 +4,8 @@ baselineSourceRoot: src/main/java
 candidateSourceRoot: src/main/kotlin
 summary:
   javaSourceCount: 30
-  kotlinSourceCount: 0
-  unmigratedCount: 30
+  kotlinSourceCount: 30
+  unmigratedCount: 0
 entries:
   - javaPath: src/main/java/org/springframework/samples/petclinic/PetClinicApplication.java
     className: PetClinicApplication
@@ -15,8 +15,8 @@ entries:
     junitTests: [PetClinicIntegrationTests, MySqlIntegrationTests, PostgresIntegrationTests]
     e2eFeatures: [all]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/PetClinicApplication.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/PetClinicRuntimeHints.java
     className: PetClinicRuntimeHints
     package: org.springframework.samples.petclinic
@@ -25,8 +25,8 @@ entries:
     junitTests: [PetClinicIntegrationTests]
     e2eFeatures: []
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/PetClinicRuntimeHints.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/package-info.java
     className: package-info
     package: org.springframework.samples.petclinic
@@ -35,8 +35,8 @@ entries:
     junitTests: []
     e2eFeatures: []
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/package-info.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/model/BaseEntity.java
     className: BaseEntity
     package: org.springframework.samples.petclinic.model
@@ -45,8 +45,8 @@ entries:
     junitTests: [EntityUtils, ClinicServiceTests, OwnerTests, ValidatorTests]
     e2eFeatures: [all-persisted-domain]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/model/BaseEntity.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/model/NamedEntity.java
     className: NamedEntity
     package: org.springframework.samples.petclinic.model
@@ -55,8 +55,8 @@ entries:
     junitTests: [PetTypeFormatterTests, PetValidatorTests, VetTests]
     e2eFeatures: [E2E-020..033, E2E-052..053]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/model/NamedEntity.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/model/Person.java
     className: Person
     package: org.springframework.samples.petclinic.model
@@ -65,8 +65,8 @@ entries:
     junitTests: [ValidatorTests, OwnerControllerTests, VetTests]
     e2eFeatures: [E2E-001..019, E2E-040..048, E2E-052..053, E2E-056]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/model/Person.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/model/package-info.java
     className: package-info
     package: org.springframework.samples.petclinic.model
@@ -75,8 +75,8 @@ entries:
     junitTests: []
     e2eFeatures: []
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/model/package-info.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/Owner.java
     className: Owner
     package: org.springframework.samples.petclinic.owner
@@ -85,8 +85,8 @@ entries:
     junitTests: [OwnerTests, OwnerControllerTests, ClinicServiceTests, PetClinicConcurrencyTests]
     e2eFeatures: [E2E-001..033, E2E-040..048, E2E-055..056]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/Owner.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java
     className: OwnerController
     package: org.springframework.samples.petclinic.owner
@@ -95,8 +95,8 @@ entries:
     junitTests: [OwnerControllerTests]
     e2eFeatures: [E2E-001..019, E2E-055..056]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/OwnerRepository.java
     className: OwnerRepository
     package: org.springframework.samples.petclinic.owner
@@ -105,8 +105,8 @@ entries:
     junitTests: [ClinicServiceTests, PetClinicIntegrationTests, MySqlIntegrationTests, PostgresIntegrationTests, PetClinicConcurrencyTests]
     e2eFeatures: [E2E-001..033, E2E-040..048, E2E-055..056]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerRepository.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/Pet.java
     className: Pet
     package: org.springframework.samples.petclinic.owner
@@ -115,8 +115,8 @@ entries:
     junitTests: [PetControllerTests, PetValidatorTests, OwnerTests, ClinicServiceTests]
     e2eFeatures: [E2E-020..033, E2E-040..048]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/Pet.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/PetController.java
     className: PetController
     package: org.springframework.samples.petclinic.owner
@@ -125,8 +125,8 @@ entries:
     junitTests: [PetControllerTests]
     e2eFeatures: [E2E-020..033]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/PetType.java
     className: PetType
     package: org.springframework.samples.petclinic.owner
@@ -135,8 +135,8 @@ entries:
     junitTests: [PetTypeFormatterTests, ClinicServiceTests]
     e2eFeatures: [E2E-020..033, E2E-040..048]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/PetType.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/PetTypeFormatter.java
     className: PetTypeFormatter
     package: org.springframework.samples.petclinic.owner
@@ -145,8 +145,8 @@ entries:
     junitTests: [PetTypeFormatterTests]
     e2eFeatures: [E2E-020..033, E2E-040..048]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/PetTypeFormatter.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/PetTypeRepository.java
     className: PetTypeRepository
     package: org.springframework.samples.petclinic.owner
@@ -155,8 +155,8 @@ entries:
     junitTests: [PetTypeFormatterTests, ClinicServiceTests]
     e2eFeatures: [E2E-020..033, E2E-040..048]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/PetTypeRepository.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/PetValidator.java
     className: PetValidator
     package: org.springframework.samples.petclinic.owner
@@ -165,8 +165,8 @@ entries:
     junitTests: [PetValidatorTests, PetControllerTests]
     e2eFeatures: [E2E-020..033]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/PetValidator.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/Visit.java
     className: Visit
     package: org.springframework.samples.petclinic.owner
@@ -175,8 +175,8 @@ entries:
     junitTests: [VisitControllerTests, ClinicServiceTests]
     e2eFeatures: [E2E-040..048]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/Visit.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/VisitController.java
     className: VisitController
     package: org.springframework.samples.petclinic.owner
@@ -185,8 +185,8 @@ entries:
     junitTests: [VisitControllerTests]
     e2eFeatures: [E2E-040..048]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/VisitController.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/owner/package-info.java
     className: package-info
     package: org.springframework.samples.petclinic.owner
@@ -195,8 +195,8 @@ entries:
     junitTests: []
     e2eFeatures: []
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/package-info.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/vet/Specialty.java
     className: Specialty
     package: org.springframework.samples.petclinic.vet
@@ -205,8 +205,8 @@ entries:
     junitTests: [VetTests, ClinicServiceTests]
     e2eFeatures: [E2E-052..053]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/Specialty.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/vet/Vet.java
     className: Vet
     package: org.springframework.samples.petclinic.vet
@@ -215,8 +215,8 @@ entries:
     junitTests: [VetTests, VetControllerTests, ClinicServiceTests]
     e2eFeatures: [E2E-052..053]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/Vet.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/vet/VetController.java
     className: VetController
     package: org.springframework.samples.petclinic.vet
@@ -225,8 +225,8 @@ entries:
     junitTests: [VetControllerTests]
     e2eFeatures: [E2E-052..053]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/VetController.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/vet/VetRepository.java
     className: VetRepository
     package: org.springframework.samples.petclinic.vet
@@ -235,8 +235,8 @@ entries:
     junitTests: [VetControllerTests, ClinicServiceTests, PetClinicIntegrationTests, MySqlIntegrationTests, PostgresIntegrationTests]
     e2eFeatures: [E2E-052..053]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/VetRepository.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/vet/Vets.java
     className: Vets
     package: org.springframework.samples.petclinic.vet
@@ -245,8 +245,8 @@ entries:
     junitTests: [VetControllerTests, VetTests]
     e2eFeatures: []
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/Vets.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/vet/package-info.java
     className: package-info
     package: org.springframework.samples.petclinic.vet
@@ -255,8 +255,8 @@ entries:
     junitTests: []
     e2eFeatures: []
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/package-info.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/system/CacheConfiguration.java
     className: CacheConfiguration
     package: org.springframework.samples.petclinic.system
@@ -265,8 +265,8 @@ entries:
     junitTests: [PetClinicIntegrationTests, ClinicServiceTests]
     e2eFeatures: [E2E-052..053]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/system/CacheConfiguration.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/system/CrashController.java
     className: CrashController
     package: org.springframework.samples.petclinic.system
@@ -275,8 +275,8 @@ entries:
     junitTests: [CrashControllerTests, CrashControllerIntegrationTests]
     e2eFeatures: []
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/system/CrashController.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/system/WebConfiguration.java
     className: WebConfiguration
     package: org.springframework.samples.petclinic.system
@@ -285,8 +285,8 @@ entries:
     junitTests: [PetClinicIntegrationTests, I18nPropertiesSyncTest]
     e2eFeatures: [E2E-050..053]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/system/WebConfiguration.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/system/WelcomeController.java
     className: WelcomeController
     package: org.springframework.samples.petclinic.system
@@ -295,8 +295,8 @@ entries:
     junitTests: [WelcomeControllerTests]
     e2eFeatures: [E2E-050..051]
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/system/WelcomeController.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked
   - javaPath: src/main/java/org/springframework/samples/petclinic/system/package-info.java
     className: package-info
     package: org.springframework.samples.petclinic.system
@@ -305,5 +305,5 @@ entries:
     junitTests: []
     e2eFeatures: []
     kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/system/package-info.kt
-    status: pending
-    verification: not_run
+    status: migrated
+    verification: junit_h2_postgres_and_e2e_passed_mysql_environment_blocked

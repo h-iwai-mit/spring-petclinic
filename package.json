@@ -12,7 +12,13 @@
     "e2e:test": "playwright test",
     "e2e:test-validators": "tsx --test e2e/scripts/*.test.ts",
     "e2e:report": "tsx e2e/scripts/report.ts",
-    "e2e:verify": "tsx e2e/scripts/verify.ts"
+    "e2e:verify": "tsx e2e/scripts/verify.ts",
+    "migration:check-sources": "tsx e2e/migration/check-sources.ts",
+    "migration:compare-junit": "tsx e2e/migration/compare-junit.ts",
+    "migration:compare-e2e": "tsx e2e/migration/compare-e2e.ts",
+    "migration:compare-images": "tsx e2e/migration/compare-images.ts",
+    "migration:test-validators": "tsx --test e2e/migration/*.test.ts",
+    "migration:verify": "tsx e2e/migration/verify.ts"
   },
   "repository": {
     "type": "git",
