@@ -1,0 +1,40 @@
+{
+  "name": "spring-petclinic",
+  "version": "1.0.0",
+  "description": "Spring PetClinic browser E2E verification",
+  "scripts": {
+    "e2e:generate-docs": "tsx e2e/scripts/cli.ts generate",
+    "e2e:validate-spec": "tsx e2e/scripts/cli.ts spec",
+    "e2e:check-implementation": "tsx e2e/scripts/cli.ts implementation",
+    "e2e:check-coverage": "tsx e2e/scripts/cli.ts coverage",
+    "e2e:check-pom": "tsx e2e/scripts/cli.ts pom",
+    "e2e:check-evidence": "tsx e2e/scripts/cli.ts evidence",
+    "e2e:test": "playwright test",
+    "e2e:test-validators": "tsx --test e2e/scripts/*.test.ts",
+    "e2e:report": "tsx e2e/scripts/report.ts",
+    "e2e:verify": "tsx e2e/scripts/verify.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h-iwai-mit/spring-petclinic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/h-iwai-mit/spring-petclinic/issues"
+  },
+  "homepage": "https://github.com/h-iwai-mit/spring-petclinic#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.6",
+    "@types/pngjs": "^6.0.5",
+    "ajv": "^8.20.0",
+    "pngjs": "^7.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "5.9.3",
+    "yaml": "^2.9.1"
+  },
+  "private": true
+}

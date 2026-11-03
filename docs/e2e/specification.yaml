@@ -1,0 +1,4025 @@
+version: 1
+pages:
+  - pageId: browser
+  - pageId: error
+  - pageId: home
+  - pageId: owner-details
+  - pageId: owner-form
+  - pageId: owner-list
+  - pageId: owner-search
+  - pageId: pet-form
+  - pageId: shared
+  - pageId: vets
+  - pageId: vets-api
+  - pageId: visit-form
+tests:
+  - testId: E2E-001
+    pageId: owner-search
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-001-01
+        operation: Open owner search
+        expected: Search form is visible
+        sourceState: browser.blank
+        targetState: E2E-001.owner-search.ready.01
+        sourceRefs:
+          - MVC-002
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-001-02
+        operation: Enter last name
+        expected: Entered query is retained
+        sourceState: E2E-001.owner-search.ready.01
+        targetState: E2E-001.owner-search.filled.02
+        sourceRefs:
+          - MVC-003
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-001-03
+        operation: Find owners
+        expected: George Franklin owner detail is shown
+        sourceState: E2E-001.owner-search.filled.02
+        targetState: E2E-001.owner-details.ready.03
+        sourceRefs:
+          - MVC-003
+          - TPL-search-single
+          - BRW-003
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-002
+    pageId: owner-search
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-002-01
+        operation: Open owner search
+        expected: Search form is visible
+        sourceState: browser.blank
+        targetState: E2E-002.owner-search.ready.01
+        sourceRefs:
+          - MVC-002
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-002-02
+        operation: Enter last name
+        expected: Entered query is retained
+        sourceState: E2E-002.owner-search.ready.01
+        targetState: E2E-002.owner-search.filled.02
+        sourceRefs:
+          - MVC-006
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-002-03
+        operation: Find owners
+        expected: Owner list contains five rows
+        sourceState: E2E-002.owner-search.filled.02
+        targetState: E2E-002.owner-list.ready.03
+        sourceRefs:
+          - MVC-006
+          - TPL-search-all
+          - BRW-011
+        pageId: owner-list
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-003
+    pageId: owner-search
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-003-01
+        operation: Open owner search
+        expected: Search form is visible
+        sourceState: browser.blank
+        targetState: E2E-003.owner-search.ready.01
+        sourceRefs:
+          - MVC-002
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-003-02
+        operation: Enter last name
+        expected: Entered query is retained
+        sourceState: E2E-003.owner-search.ready.01
+        targetState: E2E-003.owner-search.filled.02
+        sourceRefs:
+          - MVC-004
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-003-03
+        operation: Find owners
+        expected: Owners list contains Betty and Harold Davis
+        sourceState: E2E-003.owner-search.filled.02
+        targetState: E2E-003.owner-list.ready.03
+        sourceRefs:
+          - MVC-004
+          - TPL-search-multiple
+        pageId: owner-list
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-004
+    pageId: owner-search
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-004-01
+        operation: Open owner search
+        expected: Search form is visible
+        sourceState: browser.blank
+        targetState: E2E-004.owner-search.ready.01
+        sourceRefs:
+          - MVC-002
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-004-02
+        operation: Enter last name
+        expected: Entered query is retained
+        sourceState: E2E-004.owner-search.ready.01
+        targetState: E2E-004.owner-search.filled.02
+        sourceRefs:
+          - MVC-005
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-004-03
+        operation: Find owners
+        expected: Not found error is shown
+        sourceState: E2E-004.owner-search.filled.02
+        targetState: E2E-004.owner-search.invalid.03
+        sourceRefs:
+          - MVC-005
+          - TPL-search-none
+          - BRW-012
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-005
+    pageId: owner-search
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-005-01
+        operation: Open owner search
+        expected: Search form is visible
+        sourceState: browser.blank
+        targetState: E2E-005.owner-search.ready.01
+        sourceRefs:
+          - MVC-002
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-005-02
+        operation: Enter last name
+        expected: Entered query is retained
+        sourceState: E2E-005.owner-search.ready.01
+        targetState: E2E-005.owner-search.filled.02
+        sourceRefs:
+          - MVC-008
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-005-03
+        operation: Find owners
+        expected: Franklin owner detail is shown after trimming
+        sourceState: E2E-005.owner-search.filled.02
+        targetState: E2E-005.owner-details.ready.03
+        sourceRefs:
+          - MVC-008
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-006
+    pageId: owner-list
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-006-01
+        operation: Open parameterless owners route
+        expected: Five owner rows appear
+        sourceState: browser.blank
+        targetState: E2E-006.owner-list.ready.01
+        sourceRefs:
+          - MVC-007
+        pageId: owner-list
+        pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-006-02
+        operation: Open first owner from result link
+        expected: Owner Information is visible
+        sourceState: E2E-006.owner-list.ready.01
+        targetState: E2E-006.owner-details.ready.02
+        sourceRefs:
+          - MVC-017
+          - TPL-owner-select
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-007
+    pageId: owner-list
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-007-01
+        operation: Open owner list
+        expected: First page has five rows
+        sourceState: browser.blank
+        targetState: E2E-007.owner-list.ready.01
+        sourceRefs:
+          - MVC-009
+        pageId: owner-list
+        pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-007-02
+        operation: Go to next owner page
+        expected: Second page shows different owners
+        sourceState: E2E-007.owner-list.ready.01
+        targetState: E2E-007.owner-list.ready.02
+        sourceRefs:
+          - MVC-009
+          - TPL-owner-list-page-next
+          - BRW-020
+        pageId: owner-list
+        pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-007-03
+        operation: Go to previous owner page
+        expected: First page rows restored
+        sourceState: E2E-007.owner-list.ready.02
+        targetState: E2E-007.owner-list.ready.03
+        sourceRefs:
+          - MVC-009
+          - TPL-owner-list-page-previous
+          - BRW-022
+        pageId: owner-list
+        pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-007-04
+        operation: Go to last owner page
+        expected: Last page contains one to five owners
+        sourceState: E2E-007.owner-list.ready.03
+        targetState: E2E-007.owner-list.ready.04
+        sourceRefs:
+          - MVC-009
+          - TPL-owner-list-page-last
+          - BRW-021
+        pageId: owner-list
+        pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-007-05
+        operation: Go to first owner page
+        expected: First page rows restored
+        sourceState: E2E-007.owner-list.ready.04
+        targetState: E2E-007.owner-list.ready.05
+        sourceRefs:
+          - MVC-009
+          - TPL-owner-list-page-first
+          - BRW-023
+        pageId: owner-list
+        pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-007-06
+        operation: Go to numbered owner page
+        expected: Numbered second page is shown
+        sourceState: E2E-007.owner-list.ready.05
+        targetState: E2E-007.owner-list.ready.06
+        sourceRefs:
+          - MVC-009
+          - TPL-owner-list-page-number
+          - BRW-024
+        pageId: owner-list
+        pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-008
+    pageId: owner-list
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-008-01
+        operation: Open out-of-range page with a search prefix
+        expected: Redirect to page one retains surname filter
+        sourceState: browser.blank
+        targetState: E2E-008.owner-list.ready.01
+        sourceRefs:
+          - MVC-010
+        pageId: owner-list
+        pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-009
+    pageId: owner-list
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-009-01
+        operation: Open out-of-range page with a search prefix
+        expected: Redirect to page one retains surname filter
+        sourceState: browser.blank
+        targetState: E2E-009.owner-list.ready.01
+        sourceRefs:
+          - MVC-011
+        pageId: owner-list
+        pageObject: e2e/pages/owner-pages.ts#OwnerListPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-010
+    pageId: owner-form
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-010-01
+        operation: Open owner creation form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-010.owner-form.ready.01
+        sourceRefs:
+          - MVC-012
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-010-02
+        operation: Enter a unique valid owner
+        expected: Owner fields contain supplied values
+        sourceState: E2E-010.owner-form.ready.01
+        targetState: E2E-010.owner-form.filled.02
+        sourceRefs:
+          - MVC-013
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-010-03
+        operation: Save the generated owner
+        expected: Owner detail contains saved owner values
+        sourceState: E2E-010.owner-form.filled.02
+        targetState: E2E-010.owner-details.ready.03
+        sourceRefs:
+          - MVC-013
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-010-04
+        operation: Reload saved owner detail
+        expected: All owner values persist after reload
+        sourceState: E2E-010.owner-details.ready.03
+        targetState: E2E-010.owner-details.ready.04
+        sourceRefs:
+          - MVC-017
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerDetailsPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-011
+    pageId: owner-form
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-011-01
+        operation: Open owner form
+        expected: Owner form visible
+        sourceState: browser.blank
+        targetState: E2E-011.owner-form.ready.01
+        sourceRefs:
+          - MVC-014
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-011-02
+        operation: Submit blank owner form
+        expected: All five fields show validation errors
+        sourceState: E2E-011.owner-form.ready.01
+        targetState: E2E-011.owner-form.invalid.02
+        sourceRefs:
+          - MVC-014
+          - TPL-owner-create-invalid
+          - BRW-014
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-012
+    pageId: owner-form
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-012-01
+        operation: Open owner form
+        expected: Owner form visible
+        sourceState: browser.blank
+        targetState: E2E-012.owner-form.ready.01
+        sourceRefs:
+          - MVC-015
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-012-02
+        operation: Enter alphabetic telephone
+        expected: Invalid telephone entered
+        sourceState: E2E-012.owner-form.ready.01
+        targetState: E2E-012.owner-form.filled.02
+        sourceRefs:
+          - MVC-015
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-012-03
+        operation: Submit invalid telephone
+        expected: Telephone error requires ten digits
+        sourceState: E2E-012.owner-form.filled.02
+        targetState: E2E-012.owner-form.invalid.03
+        sourceRefs:
+          - MVC-015
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-013
+    pageId: owner-form
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-013-01
+        operation: Open owner form
+        expected: Owner form visible
+        sourceState: browser.blank
+        targetState: E2E-013.owner-form.ready.01
+        sourceRefs:
+          - MVC-015
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-013-02
+        operation: Enter 9 digit telephone
+        expected: Telephone value retained
+        sourceState: E2E-013.owner-form.ready.01
+        targetState: E2E-013.owner-form.filled.02
+        sourceRefs:
+          - MVC-015
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-013-03
+        operation: Submit 9 digit telephone
+        expected: Telephone error requires exactly ten digits
+        sourceState: E2E-013.owner-form.filled.02
+        targetState: E2E-013.owner-form.invalid.03
+        sourceRefs:
+          - MVC-015
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-013-04
+        operation: Enter 11 digit telephone
+        expected: Telephone value retained
+        sourceState: E2E-013.owner-form.invalid.03
+        targetState: E2E-013.owner-form.filled.04
+        sourceRefs:
+          - MVC-015
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-013-05
+        operation: Submit 11 digit telephone
+        expected: Telephone error requires exactly ten digits
+        sourceState: E2E-013.owner-form.filled.04
+        targetState: E2E-013.owner-form.invalid.05
+        sourceRefs:
+          - MVC-015
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-014
+    pageId: owner-form
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-014-01
+        operation: Open owner form
+        expected: Owner form visible
+        sourceState: browser.blank
+        targetState: E2E-014.owner-form.ready.01
+        sourceRefs:
+          - MVC-016
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-014-02
+        operation: Enter values exceeding each maximum
+        expected: Oversized values entered
+        sourceState: E2E-014.owner-form.ready.01
+        targetState: E2E-014.owner-form.filled.02
+        sourceRefs:
+          - MVC-016
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-014-03
+        operation: Submit oversized values
+        expected: All four maximum-length violations are displayed
+        sourceState: E2E-014.owner-form.filled.02
+        targetState: E2E-014.owner-form.invalid.03
+        sourceRefs:
+          - MVC-016
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-015
+    pageId: owner-form
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-015-01
+        operation: Open owner form
+        expected: Owner form visible
+        sourceState: browser.blank
+        targetState: E2E-015.owner-form.ready.01
+        sourceRefs:
+          - MVC-013
+          - MVC-016
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-015-02
+        operation: Enter maximum valid field lengths
+        expected: Each input preserves the boundary value
+        sourceState: E2E-015.owner-form.ready.01
+        targetState: E2E-015.owner-form.filled.02
+        sourceRefs:
+          - MVC-013
+          - MVC-016
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-015-03
+        operation: Save boundary length owner
+        expected: Boundary values persisted
+        sourceState: E2E-015.owner-form.filled.02
+        targetState: E2E-015.owner-details.ready.03
+        sourceRefs:
+          - MVC-013
+          - MVC-016
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-016
+    pageId: owner-form
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-016-01
+        operation: Open owner creation form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-016.owner-form.ready.01
+        sourceRefs:
+          - MVC-012
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-016-02
+        operation: Enter a unique valid owner
+        expected: Owner fields contain supplied values
+        sourceState: E2E-016.owner-form.ready.01
+        targetState: E2E-016.owner-form.filled.02
+        sourceRefs:
+          - MVC-013
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-016-03
+        operation: Save the generated owner
+        expected: Owner detail contains saved owner values
+        sourceState: E2E-016.owner-form.filled.02
+        targetState: E2E-016.owner-details.ready.03
+        sourceRefs:
+          - MVC-013
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-016-04
+        operation: Open generated owner edit form
+        expected: Existing values are prefilled
+        sourceState: E2E-016.owner-details.ready.03
+        targetState: E2E-016.owner-form.ready.04
+        sourceRefs:
+          - MVC-018
+          - TPL-owner-edit
+          - BRW-004
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerDetailsPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-016-05
+        operation: Enter updated owner values
+        expected: Updated values retained
+        sourceState: E2E-016.owner-form.ready.04
+        targetState: E2E-016.owner-form.filled.05
+        sourceRefs:
+          - MVC-019
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-016-06
+        operation: Save owner update
+        expected: Updated values displayed
+        sourceState: E2E-016.owner-form.filled.05
+        targetState: E2E-016.owner-details.ready.06
+        sourceRefs:
+          - MVC-019
+          - TPL-owner-update
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-016-07
+        operation: Reload updated owner
+        expected: Updated values survive reload
+        sourceState: E2E-016.owner-details.ready.06
+        targetState: E2E-016.owner-details.ready.07
+        sourceRefs:
+          - MVC-019
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerDetailsPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-017
+    pageId: owner-form
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-017-01
+        operation: Open owner creation form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-017.owner-form.ready.01
+        sourceRefs:
+          - MVC-012
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-017-02
+        operation: Enter a unique valid owner
+        expected: Owner fields contain supplied values
+        sourceState: E2E-017.owner-form.ready.01
+        targetState: E2E-017.owner-form.filled.02
+        sourceRefs:
+          - MVC-013
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-017-03
+        operation: Save the generated owner
+        expected: Owner detail contains saved owner values
+        sourceState: E2E-017.owner-form.filled.02
+        targetState: E2E-017.owner-details.ready.03
+        sourceRefs:
+          - MVC-013
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-017-04
+        operation: Open owner edit form
+        expected: Edit form visible
+        sourceState: E2E-017.owner-details.ready.03
+        targetState: E2E-017.owner-form.ready.04
+        sourceRefs:
+          - MVC-018
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerDetailsPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-017-05
+        operation: Blank every owner field
+        expected: All fields blank
+        sourceState: E2E-017.owner-form.ready.04
+        targetState: E2E-017.owner-form.filled.05
+        sourceRefs:
+          - MVC-020
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-017-06
+        operation: Submit invalid update
+        expected: Every owner field is invalid
+        sourceState: E2E-017.owner-form.filled.05
+        targetState: E2E-017.owner-form.invalid.06
+        sourceRefs:
+          - MVC-020
+          - TPL-owner-update-invalid
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-017-07
+        operation: Reload persisted owner
+        expected: Original owner values remain saved
+        sourceState: E2E-017.owner-form.invalid.06
+        targetState: E2E-017.owner-details.ready.07
+        sourceRefs:
+          - MVC-020
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerDetailsPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-018
+    pageId: error
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerDetailsPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-018-01
+        operation: Open nonexistent owner
+        expected: Error screen displays Something happened
+        sourceState: browser.blank
+        targetState: E2E-018.error.ready.01
+        sourceRefs:
+          - MVC-021
+        pageId: error
+        pageObject: e2e/pages/owner-pages.ts#OwnerDetailsPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-019
+    pageId: owner-search
+    preconditions:
+      - Default H2 seed data is present; generated owners are unique per test and attempt.
+    pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-019-01
+        operation: Open owner search
+        expected: Find Owners visible
+        sourceState: browser.blank
+        targetState: E2E-019.owner-search.ready.01
+        sourceRefs:
+          - MVC-002
+        pageId: owner-search
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-019-02
+        operation: Follow Add Owner link
+        expected: Blank owner creation form visible
+        sourceState: E2E-019.owner-search.ready.01
+        targetState: E2E-019.owner-form.ready.02
+        sourceRefs:
+          - MVC-012
+          - TPL-owner-new
+          - BRW-013
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerSearchPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-020
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-020-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-020.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-020-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-020.owner-form.ready.01
+        targetState: E2E-020.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-020-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-020.owner-form.filled.02
+        targetState: E2E-020.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-020-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-020.owner-details.saved.03
+        targetState: E2E-020.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+          - BRW-006
+          - MVC-022
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-020-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-020.pet-form.ready.04
+        targetState: E2E-020.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-020-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-020.pet-form.filled.05
+        targetState: E2E-020.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+          - MVC-023
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-020-07
+        operation: Open Edit Pet
+        expected: Pet form is prefilled
+        sourceState: E2E-020.owner-details.saved.06
+        targetState: E2E-020.pet-form.ready.07
+        sourceRefs:
+          - TPL-pet-edit
+          - BRW-008
+          - MVC-028
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-020-08
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-020.pet-form.ready.07
+        targetState: E2E-020.pet-form.filled.08
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-020-09
+        operation: Update pet
+        expected: Updated pet details persist
+        sourceState: E2E-020.pet-form.filled.08
+        targetState: E2E-020.owner-details.saved.09
+        sourceRefs:
+          - TPL-pet-update
+          - MVC-029
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-021
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-021-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-021.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-021-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-021.owner-form.ready.01
+        targetState: E2E-021.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-021-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-021.owner-form.filled.02
+        targetState: E2E-021.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-021-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-021.owner-details.saved.03
+        targetState: E2E-021.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-021-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-021.pet-form.ready.04
+        targetState: E2E-021.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-021-06
+        operation: Submit invalid new pet
+        expected: Form shows expected validation error
+        sourceState: E2E-021.pet-form.filled.05
+        targetState: E2E-021.pet-form.invalid.06
+        sourceRefs:
+          - TPL-pet-create-invalid
+          - BRW-007
+          - MVC-024
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-022
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-022-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-022.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-022-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-022.owner-form.ready.01
+        targetState: E2E-022.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-022-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-022.owner-form.filled.02
+        targetState: E2E-022.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-022-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-022.owner-details.saved.03
+        targetState: E2E-022.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-022-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-022.pet-form.ready.04
+        targetState: E2E-022.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-022-06
+        operation: Submit invalid new pet
+        expected: Form shows expected validation error
+        sourceState: E2E-022.pet-form.filled.05
+        targetState: E2E-022.pet-form.invalid.06
+        sourceRefs:
+          - TPL-pet-create-invalid
+          - MVC-025
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-023
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-023-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-023.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-023-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-023.owner-form.ready.01
+        targetState: E2E-023.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-023-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-023.owner-form.filled.02
+        targetState: E2E-023.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-023-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-023.owner-details.saved.03
+        targetState: E2E-023.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-023-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-023.pet-form.ready.04
+        targetState: E2E-023.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-023-06
+        operation: Submit invalid new pet
+        expected: Form shows expected validation error
+        sourceState: E2E-023.pet-form.filled.05
+        targetState: E2E-023.pet-form.invalid.06
+        sourceRefs:
+          - TPL-pet-create-invalid
+          - MVC-027
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-024
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-024-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-024.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-024-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-024.owner-form.ready.01
+        targetState: E2E-024.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-024-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-024.owner-form.filled.02
+        targetState: E2E-024.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-024-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-024.owner-details.saved.03
+        targetState: E2E-024.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-024-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-024.pet-form.ready.04
+        targetState: E2E-024.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-024-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-024.pet-form.filled.05
+        targetState: E2E-024.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-024-07
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-024.owner-details.saved.06
+        targetState: E2E-024.pet-form.ready.07
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-024-08
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-024.pet-form.ready.07
+        targetState: E2E-024.pet-form.filled.08
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-024-09
+        operation: Submit invalid new pet
+        expected: Form shows expected validation error
+        sourceState: E2E-024.pet-form.filled.08
+        targetState: E2E-024.pet-form.invalid.09
+        sourceRefs:
+          - TPL-pet-create-invalid
+          - MVC-026
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-025
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-025-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-025.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-025-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-025.owner-form.ready.01
+        targetState: E2E-025.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-025-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-025.owner-form.filled.02
+        targetState: E2E-025.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-025-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-025.owner-details.saved.03
+        targetState: E2E-025.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-025-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-025.pet-form.ready.04
+        targetState: E2E-025.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-025-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-025.pet-form.filled.05
+        targetState: E2E-025.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-025-07
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-025.owner-details.saved.06
+        targetState: E2E-025.pet-form.ready.07
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-025-08
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-025.pet-form.ready.07
+        targetState: E2E-025.pet-form.filled.08
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-025-09
+        operation: Submit invalid new pet
+        expected: Form shows expected validation error
+        sourceState: E2E-025.pet-form.filled.08
+        targetState: E2E-025.pet-form.invalid.09
+        sourceRefs:
+          - TPL-pet-create-invalid
+          - MVC-026
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-026
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-026-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-026.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-026-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-026.owner-form.ready.01
+        targetState: E2E-026.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-026-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-026.owner-form.filled.02
+        targetState: E2E-026.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-026-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-026.owner-details.saved.03
+        targetState: E2E-026.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-026-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-026.pet-form.ready.04
+        targetState: E2E-026.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-026-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-026.pet-form.filled.05
+        targetState: E2E-026.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-026-07
+        operation: Open pet edit
+        expected: Pet edit is prefilled
+        sourceState: E2E-026.owner-details.saved.06
+        targetState: E2E-026.pet-form.ready.07
+        sourceRefs:
+          - TPL-pet-edit
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-026-08
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-026.pet-form.ready.07
+        targetState: E2E-026.pet-form.filled.08
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-026-09
+        operation: Submit invalid edited pet
+        expected: Form shows expected validation error
+        sourceState: E2E-026.pet-form.filled.08
+        targetState: E2E-026.pet-form.invalid.09
+        sourceRefs:
+          - TPL-pet-update-invalid
+          - MVC-030
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-027
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-027-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-027.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-027-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-027.owner-form.ready.01
+        targetState: E2E-027.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-027-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-027.owner-form.filled.02
+        targetState: E2E-027.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-027-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-027.owner-details.saved.03
+        targetState: E2E-027.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-027-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-027.pet-form.ready.04
+        targetState: E2E-027.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-027-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-027.pet-form.filled.05
+        targetState: E2E-027.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-027-07
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-027.owner-details.saved.06
+        targetState: E2E-027.pet-form.ready.07
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-027-08
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-027.pet-form.ready.07
+        targetState: E2E-027.pet-form.filled.08
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-027-09
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-027.pet-form.filled.08
+        targetState: E2E-027.owner-details.saved.09
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-027-10
+        operation: Edit second pet
+        expected: Second pet edit is prefilled
+        sourceState: E2E-027.owner-details.saved.09
+        targetState: E2E-027.pet-form.ready.10
+        sourceRefs:
+          - TPL-pet-edit
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-027-11
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-027.pet-form.ready.10
+        targetState: E2E-027.pet-form.filled.11
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-027-12
+        operation: Submit invalid edited pet
+        expected: Form shows expected validation error
+        sourceState: E2E-027.pet-form.filled.11
+        targetState: E2E-027.pet-form.invalid.12
+        sourceRefs:
+          - TPL-pet-update-invalid
+          - MVC-031
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-028
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-028-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-028.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-028-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-028.owner-form.ready.01
+        targetState: E2E-028.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-028-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-028.owner-form.filled.02
+        targetState: E2E-028.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-028-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-028.owner-details.saved.03
+        targetState: E2E-028.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-028-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-028.pet-form.ready.04
+        targetState: E2E-028.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-028-06
+        operation: Submit invalid new pet
+        expected: Form shows expected validation error
+        sourceState: E2E-028.pet-form.filled.05
+        targetState: E2E-028.pet-form.invalid.06
+        sourceRefs:
+          - TPL-pet-create-invalid
+          - BRW-007
+          - MVC-024
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-029
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-029-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-029.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-029-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-029.owner-form.ready.01
+        targetState: E2E-029.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-029-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-029.owner-form.filled.02
+        targetState: E2E-029.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-029-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-029.owner-details.saved.03
+        targetState: E2E-029.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-029-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-029.pet-form.ready.04
+        targetState: E2E-029.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-029-06
+        operation: Choose pet type bird
+        expected: Selected type is bird
+        sourceState: E2E-029.pet-form.filled.05
+        targetState: E2E-029.pet-form.filled.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-029-07
+        operation: Choose pet type cat
+        expected: Selected type is cat
+        sourceState: E2E-029.pet-form.filled.06
+        targetState: E2E-029.pet-form.filled.07
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-029-08
+        operation: Choose pet type dog
+        expected: Selected type is dog
+        sourceState: E2E-029.pet-form.filled.07
+        targetState: E2E-029.pet-form.filled.08
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-029-09
+        operation: Choose pet type hamster
+        expected: Selected type is hamster
+        sourceState: E2E-029.pet-form.filled.08
+        targetState: E2E-029.pet-form.filled.09
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-029-10
+        operation: Choose pet type lizard
+        expected: Selected type is lizard
+        sourceState: E2E-029.pet-form.filled.09
+        targetState: E2E-029.pet-form.filled.10
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-029-11
+        operation: Choose pet type snake
+        expected: Selected type is snake
+        sourceState: E2E-029.pet-form.filled.10
+        targetState: E2E-029.pet-form.filled.11
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-029-12
+        operation: Create boundary length pet
+        expected: Thirty character pet is persisted
+        sourceState: E2E-029.pet-form.filled.11
+        targetState: E2E-029.owner-details.saved.12
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-030
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-030-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-030.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-030-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-030.owner-form.ready.01
+        targetState: E2E-030.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-030-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-030.owner-form.filled.02
+        targetState: E2E-030.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-030-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-030.owner-details.saved.03
+        targetState: E2E-030.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-030-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-030.pet-form.ready.04
+        targetState: E2E-030.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-030-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-030.pet-form.filled.05
+        targetState: E2E-030.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-030-07
+        operation: Open pet edit
+        expected: Pet edit is prefilled
+        sourceState: E2E-030.owner-details.saved.06
+        targetState: E2E-030.pet-form.ready.07
+        sourceRefs:
+          - TPL-pet-edit
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-030-08
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-030.pet-form.ready.07
+        targetState: E2E-030.pet-form.filled.08
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-030-09
+        operation: Submit invalid edited pet
+        expected: Form shows expected validation error
+        sourceState: E2E-030.pet-form.filled.08
+        targetState: E2E-030.pet-form.invalid.09
+        sourceRefs:
+          - TPL-pet-update-invalid
+          - MVC-032
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-031
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-031-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-031.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-031-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-031.owner-form.ready.01
+        targetState: E2E-031.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-031-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-031.owner-form.filled.02
+        targetState: E2E-031.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-031-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-031.owner-details.saved.03
+        targetState: E2E-031.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-031-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-031.pet-form.ready.04
+        targetState: E2E-031.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-031-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-031.pet-form.filled.05
+        targetState: E2E-031.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-031-07
+        operation: Open pet edit
+        expected: Pet edit is prefilled
+        sourceState: E2E-031.owner-details.saved.06
+        targetState: E2E-031.pet-form.ready.07
+        sourceRefs:
+          - TPL-pet-edit
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-031-08
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-031.pet-form.ready.07
+        targetState: E2E-031.pet-form.filled.08
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-031-09
+        operation: Submit invalid edited pet
+        expected: Form shows expected validation error
+        sourceState: E2E-031.pet-form.filled.08
+        targetState: E2E-031.pet-form.invalid.09
+        sourceRefs:
+          - TPL-pet-update-invalid
+          - MVC-030
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-032
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-032-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-032.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-032-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-032.owner-form.ready.01
+        targetState: E2E-032.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-032-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-032.owner-form.filled.02
+        targetState: E2E-032.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-032-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-032.owner-details.saved.03
+        targetState: E2E-032.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-032-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-032.pet-form.ready.04
+        targetState: E2E-032.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-032-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-032.pet-form.filled.05
+        targetState: E2E-032.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-032-07
+        operation: Open pet edit
+        expected: Pet edit is prefilled
+        sourceState: E2E-032.owner-details.saved.06
+        targetState: E2E-032.pet-form.ready.07
+        sourceRefs:
+          - TPL-pet-edit
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-032-08
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-032.pet-form.ready.07
+        targetState: E2E-032.pet-form.filled.08
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-032-09
+        operation: Submit invalid edited pet
+        expected: Form shows expected validation error
+        sourceState: E2E-032.pet-form.filled.08
+        targetState: E2E-032.pet-form.invalid.09
+        sourceRefs:
+          - TPL-pet-update-invalid
+          - MVC-030
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-033
+    pageId: pet-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+    testFile: e2e/tests/pets.spec.ts
+    actions:
+      - actionId: E2E-033-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-033.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-033-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-033.owner-form.ready.01
+        targetState: E2E-033.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-033-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-033.owner-form.filled.02
+        targetState: E2E-033.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-033-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-033.owner-details.saved.03
+        targetState: E2E-033.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-033-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-033.pet-form.ready.04
+        targetState: E2E-033.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-033-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-033.pet-form.filled.05
+        targetState: E2E-033.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-033-07
+        operation: Open pet edit
+        expected: Pet edit is prefilled
+        sourceState: E2E-033.owner-details.saved.06
+        targetState: E2E-033.pet-form.ready.07
+        sourceRefs:
+          - TPL-pet-edit
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-033-08
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-033.pet-form.ready.07
+        targetState: E2E-033.pet-form.filled.08
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-033-09
+        operation: Update pet with unchanged name
+        expected: Own name is accepted and modified date persists
+        sourceState: E2E-033.pet-form.filled.08
+        targetState: E2E-033.owner-details.saved.09
+        sourceRefs:
+          - TPL-pet-update
+          - MVC-029
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-040
+    pageId: visit-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/visit-page.ts#VisitPage
+    testFile: e2e/tests/visits.spec.ts
+    actions:
+      - actionId: E2E-040-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-040.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-040-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-040.owner-form.ready.01
+        targetState: E2E-040.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-040-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-040.owner-form.filled.02
+        targetState: E2E-040.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-040-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-040.owner-details.saved.03
+        targetState: E2E-040.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-040-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-040.pet-form.ready.04
+        targetState: E2E-040.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-040-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-040.pet-form.filled.05
+        targetState: E2E-040.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-040-07
+        operation: Open Add Visit
+        expected: New Visit form is visible
+        sourceState: E2E-040.owner-details.saved.06
+        targetState: E2E-040.visit-form.ready.07
+        sourceRefs:
+          - TPL-visit-new
+          - BRW-009
+          - MVC-033
+        pageId: visit-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-040-08
+        operation: Enter visit date and description
+        expected: Visit inputs retain entered values
+        sourceState: E2E-040.visit-form.ready.07
+        targetState: E2E-040.visit-form.filled.08
+        sourceRefs:
+          - TPL-visit-create
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-040-09
+        operation: Book visit
+        expected: Booked visit appears in owner details
+        sourceState: E2E-040.visit-form.filled.08
+        targetState: E2E-040.owner-details.saved.09
+        sourceRefs:
+          - TPL-visit-create
+          - MVC-034
+        pageId: owner-details
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-041
+    pageId: visit-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/visit-page.ts#VisitPage
+    testFile: e2e/tests/visits.spec.ts
+    actions:
+      - actionId: E2E-041-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-041.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-041-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-041.owner-form.ready.01
+        targetState: E2E-041.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-041-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-041.owner-form.filled.02
+        targetState: E2E-041.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-041-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-041.owner-details.saved.03
+        targetState: E2E-041.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-041-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-041.pet-form.ready.04
+        targetState: E2E-041.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-041-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-041.pet-form.filled.05
+        targetState: E2E-041.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-041-07
+        operation: Open Add Visit
+        expected: New Visit form is visible
+        sourceState: E2E-041.owner-details.saved.06
+        targetState: E2E-041.visit-form.ready.07
+        sourceRefs:
+          - TPL-visit-new
+        pageId: visit-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-041-08
+        operation: Enter visit date and description
+        expected: Visit inputs retain entered values
+        sourceState: E2E-041.visit-form.ready.07
+        targetState: E2E-041.visit-form.filled.08
+        sourceRefs:
+          - TPL-visit-create
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-041-09
+        operation: Submit invalid visit
+        expected: Server shows description validation error
+        sourceState: E2E-041.visit-form.filled.08
+        targetState: E2E-041.visit-form.invalid.09
+        sourceRefs:
+          - TPL-visit-invalid
+          - BRW-010
+          - MVC-035
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-042
+    pageId: visit-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/visit-page.ts#VisitPage
+    testFile: e2e/tests/visits.spec.ts
+    actions:
+      - actionId: E2E-042-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-042.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-042-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-042.owner-form.ready.01
+        targetState: E2E-042.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-042-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-042.owner-form.filled.02
+        targetState: E2E-042.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-042-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-042.owner-details.saved.03
+        targetState: E2E-042.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-042-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-042.pet-form.ready.04
+        targetState: E2E-042.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-042-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-042.pet-form.filled.05
+        targetState: E2E-042.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-042-07
+        operation: Open Add Visit
+        expected: New Visit form is visible
+        sourceState: E2E-042.owner-details.saved.06
+        targetState: E2E-042.visit-form.ready.07
+        sourceRefs:
+          - TPL-visit-new
+        pageId: visit-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-042-08
+        operation: Enter visit date and description
+        expected: Visit inputs retain entered values
+        sourceState: E2E-042.visit-form.ready.07
+        targetState: E2E-042.visit-form.filled.08
+        sourceRefs:
+          - TPL-visit-create
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-042-09
+        operation: Submit invalid visit
+        expected: Server shows description validation error
+        sourceState: E2E-042.visit-form.filled.08
+        targetState: E2E-042.visit-form.invalid.09
+        sourceRefs:
+          - TPL-visit-invalid
+          - MVC-036
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-043
+    pageId: visit-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/visit-page.ts#VisitPage
+    testFile: e2e/tests/visits.spec.ts
+    actions:
+      - actionId: E2E-043-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-043.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-043-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-043.owner-form.ready.01
+        targetState: E2E-043.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-043-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-043.owner-form.filled.02
+        targetState: E2E-043.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-043-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-043.owner-details.saved.03
+        targetState: E2E-043.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-043-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-043.pet-form.ready.04
+        targetState: E2E-043.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-043-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-043.pet-form.filled.05
+        targetState: E2E-043.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-043-07
+        operation: Open Add Visit
+        expected: New Visit form is visible
+        sourceState: E2E-043.owner-details.saved.06
+        targetState: E2E-043.visit-form.ready.07
+        sourceRefs:
+          - TPL-visit-new
+        pageId: visit-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-043-08
+        operation: Enter visit date and description
+        expected: Visit inputs retain entered values
+        sourceState: E2E-043.visit-form.ready.07
+        targetState: E2E-043.visit-form.filled.08
+        sourceRefs:
+          - TPL-visit-create
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-043-09
+        operation: Submit date below browser minimum
+        expected: Browser blocks submission and marks date underflow
+        sourceState: E2E-043.visit-form.filled.08
+        targetState: E2E-043.visit-form.invalid.09
+        sourceRefs:
+          - TPL-visit-past-client
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-044
+    pageId: visit-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/visit-page.ts#VisitPage
+    testFile: e2e/tests/visits.spec.ts
+    actions:
+      - actionId: E2E-044-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-044.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-044-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-044.owner-form.ready.01
+        targetState: E2E-044.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-044-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-044.owner-form.filled.02
+        targetState: E2E-044.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-044-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-044.owner-details.saved.03
+        targetState: E2E-044.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-044-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-044.pet-form.ready.04
+        targetState: E2E-044.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-044-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-044.pet-form.filled.05
+        targetState: E2E-044.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-044-07
+        operation: Open Add Visit
+        expected: New Visit form is visible
+        sourceState: E2E-044.owner-details.saved.06
+        targetState: E2E-044.visit-form.ready.07
+        sourceRefs:
+          - TPL-visit-new
+        pageId: visit-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-044-08
+        operation: Enter visit date and description
+        expected: Visit inputs retain entered values
+        sourceState: E2E-044.visit-form.ready.07
+        targetState: E2E-044.visit-form.filled.08
+        sourceRefs:
+          - TPL-visit-create
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-044-09
+        operation: Submit date below browser minimum
+        expected: Browser blocks submission and marks date underflow
+        sourceState: E2E-044.visit-form.filled.08
+        targetState: E2E-044.visit-form.invalid.09
+        sourceRefs:
+          - TPL-visit-past-client
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-045
+    pageId: visit-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/visit-page.ts#VisitPage
+    testFile: e2e/tests/visits.spec.ts
+    actions:
+      - actionId: E2E-045-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-045.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-045-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-045.owner-form.ready.01
+        targetState: E2E-045.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-045-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-045.owner-form.filled.02
+        targetState: E2E-045.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-045-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-045.owner-details.saved.03
+        targetState: E2E-045.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-045-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-045.pet-form.ready.04
+        targetState: E2E-045.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-045-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-045.pet-form.filled.05
+        targetState: E2E-045.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-045-07
+        operation: Open Add Visit
+        expected: New Visit form is visible
+        sourceState: E2E-045.owner-details.saved.06
+        targetState: E2E-045.visit-form.ready.07
+        sourceRefs:
+          - TPL-visit-new
+        pageId: visit-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-045-08
+        operation: Enter visit date and description
+        expected: Visit inputs retain entered values
+        sourceState: E2E-045.visit-form.ready.07
+        targetState: E2E-045.visit-form.filled.08
+        sourceRefs:
+          - TPL-visit-create
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-045-09
+        operation: Submit with native validation bypassed
+        expected: Server rejects non-future date
+        sourceState: E2E-045.visit-form.filled.08
+        targetState: E2E-045.visit-form.invalid.09
+        sourceRefs:
+          - TPL-visit-invalid
+          - MVC-037
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-046
+    pageId: visit-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/visit-page.ts#VisitPage
+    testFile: e2e/tests/visits.spec.ts
+    actions:
+      - actionId: E2E-046-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-046.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-046-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-046.owner-form.ready.01
+        targetState: E2E-046.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-046-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-046.owner-form.filled.02
+        targetState: E2E-046.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-046-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-046.owner-details.saved.03
+        targetState: E2E-046.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-046-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-046.pet-form.ready.04
+        targetState: E2E-046.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-046-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-046.pet-form.filled.05
+        targetState: E2E-046.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-046-07
+        operation: Open Add Visit
+        expected: New Visit form is visible
+        sourceState: E2E-046.owner-details.saved.06
+        targetState: E2E-046.visit-form.ready.07
+        sourceRefs:
+          - TPL-visit-new
+        pageId: visit-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-046-08
+        operation: Enter visit date and description
+        expected: Visit inputs retain entered values
+        sourceState: E2E-046.visit-form.ready.07
+        targetState: E2E-046.visit-form.filled.08
+        sourceRefs:
+          - TPL-visit-create
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-046-09
+        operation: Submit with native validation bypassed
+        expected: Server rejects non-future date
+        sourceState: E2E-046.visit-form.filled.08
+        targetState: E2E-046.visit-form.invalid.09
+        sourceRefs:
+          - TPL-visit-invalid
+          - MVC-037
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-047
+    pageId: visit-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/visit-page.ts#VisitPage
+    testFile: e2e/tests/visits.spec.ts
+    actions:
+      - actionId: E2E-047-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-047.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-047-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-047.owner-form.ready.01
+        targetState: E2E-047.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-047-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-047.owner-form.filled.02
+        targetState: E2E-047.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-047-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-047.owner-details.saved.03
+        targetState: E2E-047.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-047-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-047.pet-form.ready.04
+        targetState: E2E-047.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-047-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-047.pet-form.filled.05
+        targetState: E2E-047.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-047-07
+        operation: Open Add Visit
+        expected: New Visit form is visible
+        sourceState: E2E-047.owner-details.saved.06
+        targetState: E2E-047.visit-form.ready.07
+        sourceRefs:
+          - TPL-visit-new
+        pageId: visit-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-047-08
+        operation: Enter visit date and description
+        expected: Visit inputs retain entered values
+        sourceState: E2E-047.visit-form.ready.07
+        targetState: E2E-047.visit-form.filled.08
+        sourceRefs:
+          - TPL-visit-create
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-047-09
+        operation: Book visit
+        expected: Booked visit appears in owner details
+        sourceState: E2E-047.visit-form.filled.08
+        targetState: E2E-047.owner-details.saved.09
+        sourceRefs:
+          - TPL-visit-create
+          - MVC-050
+        pageId: owner-details
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-048
+    pageId: visit-form
+    preconditions:
+      - Application is available; create isolated owner through the UI.
+    pageObject: e2e/pages/visit-page.ts#VisitPage
+    testFile: e2e/tests/visits.spec.ts
+    actions:
+      - actionId: E2E-048-01
+        operation: Open new owner form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-048.owner-form.ready.01
+        sourceRefs:
+          - TPL-owner-new
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-048-02
+        operation: Enter unique owner data
+        expected: Last name retains unique input
+        sourceState: E2E-048.owner-form.ready.01
+        targetState: E2E-048.owner-form.filled.02
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-048-03
+        operation: Create isolated owner
+        expected: Owner details include unique surname
+        sourceState: E2E-048.owner-form.filled.02
+        targetState: E2E-048.owner-details.saved.03
+        sourceRefs:
+          - TPL-owner-create
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-048-04
+        operation: Open Add New Pet
+        expected: New Pet form is visible
+        sourceState: E2E-048.owner-details.saved.03
+        targetState: E2E-048.pet-form.ready.04
+        sourceRefs:
+          - TPL-pet-new
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-048-05
+        operation: Enter pet name, birth date and type
+        expected: Pet inputs retain supplied values
+        sourceState: E2E-048.pet-form.ready.04
+        targetState: E2E-048.pet-form.filled.05
+        sourceRefs:
+          - TPL-pet-create
+        pageId: pet-form
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-048-06
+        operation: Submit new pet
+        expected: Pet is persisted in owner details
+        sourceState: E2E-048.pet-form.filled.05
+        targetState: E2E-048.owner-details.saved.06
+        sourceRefs:
+          - TPL-pet-create
+        pageId: owner-details
+        pageObject: e2e/pages/pet-pages.ts#PetFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-048-07
+        operation: Open Add Visit
+        expected: New Visit form is visible
+        sourceState: E2E-048.owner-details.saved.06
+        targetState: E2E-048.visit-form.ready.07
+        sourceRefs:
+          - TPL-visit-new
+        pageId: visit-form
+        pageObject: e2e/pages/pet-pages.ts#PetDetailsComponent
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-048-08
+        operation: Enter visit date and description
+        expected: Visit inputs retain entered values
+        sourceState: E2E-048.visit-form.ready.07
+        targetState: E2E-048.visit-form.filled.08
+        sourceRefs:
+          - TPL-visit-create
+        pageId: visit-form
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-048-09
+        operation: Book visit
+        expected: Booked visit appears in owner details
+        sourceState: E2E-048.visit-form.filled.08
+        targetState: E2E-048.owner-details.saved.09
+        sourceRefs:
+          - TPL-visit-create
+        pageId: owner-details
+        pageObject: e2e/pages/visit-page.ts#VisitPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-050
+    pageId: home
+    preconditions:
+      - Seed H2 database with six veterinarians; no destructive seed mutations.
+    pageObject: e2e/pages/navigation.ts#HomePage
+    testFile: e2e/tests/common.spec.ts
+    actions:
+      - actionId: E2E-050-01
+        operation: Open home
+        expected: Welcome visible
+        sourceState: browser.blank
+        targetState: E2E-050.home.1
+        sourceRefs:
+          - MVC-001
+          - BRW-001
+        pageId: home
+        pageObject: e2e/pages/navigation.ts#HomePage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-050-02
+        operation: Find Owners navigation
+        expected: Search form visible
+        sourceState: E2E-050.home.1
+        targetState: E2E-050.owner-search.2
+        sourceRefs:
+          - TPL-nav-owners
+          - BRW-002
+        pageId: owner-search
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-050-03
+        operation: Veterinarians navigation
+        expected: Veterinarians visible
+        sourceState: E2E-050.owner-search.2
+        targetState: E2E-050.vets.3
+        sourceRefs:
+          - TPL-nav-vets
+          - BRW-029
+        pageId: vets
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-050-04
+        operation: Home navigation
+        expected: Welcome visible
+        sourceState: E2E-050.vets.3
+        targetState: E2E-050.home.4
+        sourceRefs:
+          - TPL-nav-home
+          - BRW-030
+        pageId: home
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-050-05
+        operation: Brand home navigation
+        expected: Brand returns home
+        sourceState: E2E-050.home.4
+        targetState: E2E-050.home.5
+        sourceRefs:
+          - TPL-nav-brand
+          - BRW-028
+        pageId: home
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-050-06
+        operation: Error navigation
+        expected: 500 error rendered
+        sourceState: E2E-050.home.5
+        targetState: E2E-050.error.6
+        sourceRefs:
+          - TPL-nav-error
+          - TPL-error-500
+          - BRW-016
+          - BRW-031
+          - MVC-043
+        pageId: error
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-050-07
+        operation: Recover from error
+        expected: Home navigation works on error page
+        sourceState: E2E-050.error.6
+        targetState: E2E-050.home.7
+        sourceRefs:
+          - TPL-nav-home
+        pageId: home
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-051
+    pageId: home
+    preconditions:
+      - Seed H2 database with six veterinarians; no destructive seed mutations.
+    pageObject: e2e/pages/navigation.ts#Navigation
+    testFile: e2e/tests/common.spec.ts
+    actions:
+      - actionId: E2E-051-01
+        operation: Open mobile home
+        expected: Mobile menu initially collapsed
+        sourceState: browser.blank
+        targetState: E2E-051.home.1
+        sourceRefs:
+          - MVC-001
+        pageId: home
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-051-02
+        operation: Expand mobile navigation
+        expected: Menu expanded
+        sourceState: E2E-051.home.1
+        targetState: E2E-051.home.2
+        sourceRefs:
+          - TPL-nav-toggle
+          - BRW-018
+        pageId: home
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-051-03
+        operation: Collapse mobile navigation
+        expected: Menu collapsed
+        sourceState: E2E-051.home.2
+        targetState: E2E-051.home.3
+        sourceRefs:
+          - TPL-nav-toggle
+          - BRW-019
+        pageId: home
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-051-04
+        operation: Reopen mobile navigation
+        expected: Links available
+        sourceState: E2E-051.home.3
+        targetState: E2E-051.home.4
+        sourceRefs:
+          - TPL-nav-toggle
+        pageId: home
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-051-05
+        operation: Use mobile owner link
+        expected: Search available on mobile
+        sourceState: E2E-051.home.4
+        targetState: E2E-051.owner-search.5
+        sourceRefs:
+          - TPL-nav-owners
+        pageId: owner-search
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-052
+    pageId: vets
+    preconditions:
+      - Seed H2 database with six veterinarians; no destructive seed mutations.
+    pageObject: e2e/pages/vets-page.ts#VetsPage
+    testFile: e2e/tests/common.spec.ts
+    actions:
+      - actionId: E2E-052-01
+        operation: Open veterinarian list
+        expected: Five seeded vets with specialties and none; first disabled
+        sourceState: browser.blank
+        targetState: E2E-052.vets.1
+        sourceRefs:
+          - MVC-039
+          - TPL-vet-specialties
+          - BRW-015
+        pageId: vets
+        pageObject: e2e/pages/vets-page.ts#VetsPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-052-02
+        operation: Next veterinarian page
+        expected: Last veterinarian page and last disabled
+        sourceState: E2E-052.vets.1
+        targetState: E2E-052.vets.2
+        sourceRefs:
+          - MVC-040
+          - TPL-vets-page-next
+          - BRW-025
+        pageId: vets
+        pageObject: e2e/pages/vets-page.ts#VetsPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-052-03
+        operation: First veterinarian page
+        expected: First page restored
+        sourceState: E2E-052.vets.2
+        targetState: E2E-052.vets.3
+        sourceRefs:
+          - TPL-vets-page-first
+        pageId: vets
+        pageObject: e2e/pages/vets-page.ts#VetsPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-052-04
+        operation: Last veterinarian page
+        expected: Last page shown
+        sourceState: E2E-052.vets.3
+        targetState: E2E-052.vets.4
+        sourceRefs:
+          - TPL-vets-page-last
+        pageId: vets
+        pageObject: e2e/pages/vets-page.ts#VetsPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-052-05
+        operation: Previous veterinarian page
+        expected: Previous page shown
+        sourceState: E2E-052.vets.4
+        targetState: E2E-052.vets.5
+        sourceRefs:
+          - TPL-vets-page-previous
+          - BRW-026
+        pageId: vets
+        pageObject: e2e/pages/vets-page.ts#VetsPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-052-06
+        operation: Numbered veterinarian page
+        expected: Numbered page2 shown
+        sourceState: E2E-052.vets.5
+        targetState: E2E-052.vets.6
+        sourceRefs:
+          - TPL-vets-page-number
+          - BRW-027
+        pageId: vets
+        pageObject: e2e/pages/vets-page.ts#VetsPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-053
+    pageId: vets
+    preconditions:
+      - Seed H2 database with six veterinarians; no destructive seed mutations.
+    pageObject: e2e/pages/vets-page.ts#VetsPage
+    testFile: e2e/tests/common.spec.ts
+    actions:
+      - actionId: E2E-053-01
+        operation: Open low veterinarian page
+        expected: Invalid low page redirects1
+        sourceState: browser.blank
+        targetState: E2E-053.vets.1
+        sourceRefs:
+          - MVC-041
+        pageId: vets
+        pageObject: e2e/pages/vets-page.ts#VetsPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-053-02
+        operation: Open high veterinarian page
+        expected: Invalid high page redirects1
+        sourceState: E2E-053.vets.1
+        targetState: E2E-053.vets.2
+        sourceRefs:
+          - MVC-042
+        pageId: vets
+        pageObject: e2e/pages/vets-page.ts#VetsPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-054
+    pageId: error
+    preconditions:
+      - Seed H2 database with six veterinarians; no destructive seed mutations.
+    pageObject: e2e/pages/navigation.ts
+    testFile: e2e/tests/common.spec.ts
+    actions:
+      - actionId: E2E-054-01
+        operation: Open missing page
+        expected: 404 template rendered
+        sourceState: browser.blank
+        targetState: E2E-054.error.1
+        sourceRefs:
+          - TPL-error-404
+          - BRW-017
+        pageId: error
+        pageObject: e2e/pages/error-page.ts#ErrorPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-054-02
+        operation: Open missing owner
+        expected: Missing owner renders500
+        sourceState: E2E-054.error.1
+        targetState: E2E-054.error.2
+        sourceRefs:
+          - MVC-021
+        pageId: error
+        pageObject: e2e/pages/error-page.ts#ErrorPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-054-03
+        operation: Open missing pet visit
+        expected: Missing pet visit renders500
+        sourceState: E2E-054.error.2
+        targetState: E2E-054.error.3
+        sourceRefs:
+          - MVC-038
+        pageId: error
+        pageObject: e2e/pages/error-page.ts#ErrorPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-054-04
+        operation: Open missing pet edit
+        expected: Missing pet edit renders500
+        sourceState: E2E-054.error.3
+        targetState: E2E-054.error.4
+        sourceRefs:
+          - MVC-049
+        pageId: error
+        pageObject: e2e/pages/error-page.ts#ErrorPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-054-05
+        operation: Open malformed owner ID
+        expected: 400 general error template rendered
+        sourceState: E2E-054.error.4
+        targetState: E2E-054.error.5
+        sourceRefs:
+          - TPL-error-general
+        pageId: error
+        pageObject: e2e/pages/error-page.ts#ErrorPage
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-055
+    pageId: owner-form
+    preconditions:
+      - Seed H2 database with six veterinarians; no destructive seed mutations.
+    pageObject: e2e/pages/navigation.ts#Navigation
+    testFile: e2e/tests/common.spec.ts
+    actions:
+      - actionId: E2E-055-01
+        operation: Open owner for timed flash dismissal
+        expected: Owner form ready
+        sourceState: browser.blank
+        targetState: E2E-055.owner-form.1
+        sourceRefs:
+          - MVC-012
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-055-02
+        operation: Enter fresh owner
+        expected: Owner data retained
+        sourceState: E2E-055.owner-form.1
+        targetState: E2E-055.owner-form.2
+        sourceRefs:
+          - MVC-013
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-055-03
+        operation: Create owner for flash expiry
+        expected: Creation flash visible
+        sourceState: E2E-055.owner-form.2
+        targetState: E2E-055.owner-details.3
+        sourceRefs:
+          - MVC-013
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-055-04
+        operation: Wait for automatic flash dismissal
+        expected: Success flash hides after3seconds
+        sourceState: E2E-055.owner-details.3
+        targetState: E2E-055.owner-details.4
+        sourceRefs:
+          - TPL-flash-expiry
+        pageId: owner-details
+        pageObject: e2e/pages/navigation.ts#Navigation
+        evidence:
+          before: true
+          after: true
+  - testId: E2E-056
+    pageId: owner-form
+    preconditions:
+      - Create an isolated owner through the UI; preserve seeded owners.
+    pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+    testFile: e2e/tests/owners.spec.ts
+    actions:
+      - actionId: E2E-056-01
+        operation: Open owner creation form
+        expected: Owner form is visible
+        sourceState: browser.blank
+        targetState: E2E-056.owner-form.ready.01
+        sourceRefs:
+          - MVC-012
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-056-02
+        operation: Enter unique valid owner
+        expected: All owner fields retain input
+        sourceState: E2E-056.owner-form.ready.01
+        targetState: E2E-056.owner-form.filled.02
+        sourceRefs:
+          - MVC-013
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-056-03
+        operation: Save generated owner
+        expected: Saved owner detail appears
+        sourceState: E2E-056.owner-form.filled.02
+        targetState: E2E-056.owner-details.ready.03
+        sourceRefs:
+          - MVC-013
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-056-04
+        operation: Open owner edit form
+        expected: Existing telephone is prefilled
+        sourceState: E2E-056.owner-details.ready.03
+        targetState: E2E-056.owner-form.ready.04
+        sourceRefs:
+          - MVC-018
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerDetailsPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-056-05
+        operation: Enter alphabetic telephone during edit
+        expected: Alphabetic telephone is entered
+        sourceState: E2E-056.owner-form.ready.04
+        targetState: E2E-056.owner-form.filled.05
+        sourceRefs:
+          - MVC-020
+          - BRW-005
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-056-06
+        operation: Submit alphabetic telephone update
+        expected: Telephone validation requires ten digits
+        sourceState: E2E-056.owner-form.filled.05
+        targetState: E2E-056.owner-form.invalid.06
+        sourceRefs:
+          - MVC-020
+          - BRW-005
+        pageId: owner-form
+        pageObject: e2e/pages/owner-pages.ts#OwnerFormPage
+        evidence:
+          before: true
+          after: true
+      - actionId: E2E-056-07
+        operation: Reload owner after rejected edit
+        expected: Previously saved telephone remains intact
+        sourceState: E2E-056.owner-form.invalid.06
+        targetState: E2E-056.owner-details.ready.07
+        sourceRefs:
+          - MVC-017
+        pageId: owner-details
+        pageObject: e2e/pages/owner-pages.ts#OwnerDetailsPage
+        evidence:
+          before: true
+          after: true

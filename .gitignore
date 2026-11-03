@@ -46,3 +46,10 @@ out/
 _site/
 *.css
 !petclinic.css
+
+# Local E2E dependencies and run artifacts
+node_modules/
+e2e/evidence/
+e2e/discovery-artifacts/
+playwright-report/
+test-results/

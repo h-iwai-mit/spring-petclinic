@@ -1,0 +1,1214 @@
+{
+  "reviewedAt": "2026-11-03T09:45:46.349Z",
+  "scope": "Independent manual semantic mapping of MVC/template/browser discoveries against actual POM calls and Playwright expectations. Review artifact; canonical spec remains YAML.",
+  "mappings": {
+    "TPL-nav-brand": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-05",
+        "rationale": "brandHome clicks the shared brand link; Welcome heading confirms destination."
+      }
+    ],
+    "TPL-nav-home": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-04",
+        "rationale": "home clicks Home navigation and asserts Welcome."
+      }
+    ],
+    "TPL-nav-owners": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-02",
+        "rationale": "owners clicks common Find Owners navigation and checks search heading."
+      }
+    ],
+    "TPL-nav-vets": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-03",
+        "rationale": "vets clicks shared Veterinarians navigation and checks vet heading."
+      }
+    ],
+    "TPL-nav-error": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-06",
+        "rationale": "error clicks Error navigation and checks internal server error text."
+      }
+    ],
+    "TPL-nav-toggle": [
+      {
+        "testId": "E2E-051",
+        "actionId": "E2E-051-02",
+        "rationale": "toggleMenu opens navbar; visibility asserted."
+      },
+      {
+        "testId": "E2E-051",
+        "actionId": "E2E-051-03",
+        "rationale": "toggleMenu closes navbar; hidden state asserted."
+      }
+    ],
+    "TPL-search-single": [
+      {
+        "testId": "E2E-001",
+        "actionId": "E2E-001-03",
+        "rationale": "Find Owner submits Franklin and asserts George Franklin details."
+      }
+    ],
+    "TPL-search-multiple": [
+      {
+        "testId": "E2E-003",
+        "actionId": "E2E-003-03",
+        "rationale": "Find Owner submits Davis and asserts Betty/Harold list."
+      }
+    ],
+    "TPL-search-all": [
+      {
+        "testId": "E2E-002",
+        "actionId": "E2E-002-03",
+        "rationale": "Empty query submitted; five result rows checked."
+      }
+    ],
+    "TPL-search-none": [
+      {
+        "testId": "E2E-004",
+        "actionId": "E2E-004-03",
+        "rationale": "Missing surname submit displays not-found error."
+      }
+    ],
+    "TPL-owner-new": [
+      {
+        "testId": "E2E-019",
+        "actionId": "E2E-019-02",
+        "rationale": "addOwner explicitly follows Add Owner link rather than only opening URL."
+      }
+    ],
+    "TPL-owner-select": [
+      {
+        "testId": "E2E-006",
+        "actionId": "E2E-006-02",
+        "rationale": "openFirstOwner clicks result owner name and checks details heading."
+      }
+    ],
+    "TPL-owner-list-page-number": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-06",
+        "rationale": "turnPage(2) clicks number and verifies query and changed names."
+      }
+    ],
+    "TPL-owner-list-page-first": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-05",
+        "rationale": "turnPage(First) restores initial names."
+      }
+    ],
+    "TPL-owner-list-page-previous": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-03",
+        "rationale": "turnPage(Previous) restores initial names/page1."
+      }
+    ],
+    "TPL-owner-list-page-next": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-02",
+        "rationale": "turnPage(Next) checks page2 and different names."
+      }
+    ],
+    "TPL-owner-list-page-last": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-04",
+        "rationale": "turnPage(Last) checks numeric page and 1..5 final rows."
+      }
+    ],
+    "TPL-vets-page-number": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-06",
+        "rationale": "numbered clicks page2 and checks one row and URL."
+      }
+    ],
+    "TPL-vets-page-first": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-03",
+        "rationale": "first clicks First and checks five rows restored."
+      }
+    ],
+    "TPL-vets-page-previous": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-05",
+        "rationale": "previous clicks Previous and checks five rows."
+      }
+    ],
+    "TPL-vets-page-next": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-02",
+        "rationale": "next clicks Next, checks Sharon Jenkins and disabled Last."
+      }
+    ],
+    "TPL-vets-page-last": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-04",
+        "rationale": "last clicks Last and checks one row."
+      }
+    ],
+    "TPL-owner-edit": [
+      {
+        "testId": "E2E-016",
+        "actionId": "E2E-016-04",
+        "rationale": "openEdit clicks Edit Owner and checks original prefilled field values."
+      }
+    ],
+    "TPL-pet-new": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-04",
+        "rationale": "detail.addPet clicks Add New Pet; heading visible."
+      }
+    ],
+    "TPL-pet-edit": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-07",
+        "rationale": "detail.editPet opens persisted pet edit and checks prefilled fields."
+      }
+    ],
+    "TPL-visit-new": [
+      {
+        "testId": "E2E-040",
+        "actionId": "E2E-040-07",
+        "rationale": "detail.addVisit opens visit form; heading visible."
+      }
+    ],
+    "TPL-owner-create": [
+      {
+        "testId": "E2E-010",
+        "actionId": "E2E-010-03",
+        "rationale": "submit creates unique owner; saved values and heading asserted."
+      }
+    ],
+    "TPL-owner-update": [
+      {
+        "testId": "E2E-016",
+        "actionId": "E2E-016-06",
+        "rationale": "submit saves generated owner edits; updated values visible."
+      }
+    ],
+    "TPL-owner-create-invalid": [
+      {
+        "testId": "E2E-011",
+        "actionId": "E2E-011-02",
+        "rationale": "submit blank new owner; all five field errors checked."
+      }
+    ],
+    "TPL-owner-update-invalid": [
+      {
+        "testId": "E2E-017",
+        "actionId": "E2E-017-06",
+        "rationale": "submit blank edit owner; all five field errors checked."
+      }
+    ],
+    "TPL-pet-create": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-06",
+        "rationale": "submit new pet; owner details checked for saved pet."
+      }
+    ],
+    "TPL-pet-update": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-09",
+        "rationale": "submit changed pet; updated values checked."
+      }
+    ],
+    "TPL-pet-create-invalid": [
+      {
+        "testId": "E2E-021",
+        "actionId": "E2E-021-06",
+        "rationale": "submit empty new pet name; required-name error checked."
+      }
+    ],
+    "TPL-pet-update-invalid": [
+      {
+        "testId": "E2E-026",
+        "actionId": "E2E-026-09",
+        "rationale": "submit empty edited pet name; required-name error checked."
+      }
+    ],
+    "TPL-visit-create": [
+      {
+        "testId": "E2E-040",
+        "actionId": "E2E-040-09",
+        "rationale": "submit tomorrow visit; owner details heading and saved description visible in visit row are asserted. The current assertion does not independently compare rendered date."
+      }
+    ],
+    "TPL-visit-invalid": [
+      {
+        "testId": "E2E-041",
+        "actionId": "E2E-041-09",
+        "rationale": "submit empty description with valid date; server description error checked."
+      }
+    ],
+    "TPL-visit-past-client": [
+      {
+        "testId": "E2E-043",
+        "actionId": "E2E-043-09",
+        "rationale": "submit past date with native min active; rangeUnderflow and unchanged URL checked."
+      }
+    ],
+    "TPL-flash-expiry": [
+      {
+        "testId": "E2E-055",
+        "actionId": "E2E-055-04",
+        "rationale": "advance controlled clock3s; success flash hidden checked. Existing opposite-alert script exception separately documented."
+      }
+    ],
+    "TPL-error-404": [
+      {
+        "testId": "E2E-054",
+        "actionId": "E2E-054-01",
+        "rationale": "open unknown route and assert404-specific template content."
+      }
+    ],
+    "TPL-error-500": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-06",
+        "rationale": "intentional exception route via nav; internal server error text checked."
+      }
+    ],
+    "TPL-error-general": [
+      {
+        "testId": "E2E-054",
+        "actionId": "E2E-054-05",
+        "rationale": "malformed owner identifier produces400 and general error template check."
+      }
+    ],
+    "TPL-vet-specialties": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-01",
+        "rationale": "rows explicitly assert none/radiology/dentistry surgery/surgery values."
+      }
+    ],
+    "BRW-001": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-01",
+        "rationale": "Home GET and Welcome assertion match observed action."
+      }
+    ],
+    "BRW-002": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-02",
+        "rationale": "Common Find Owners navigation and destination assertion."
+      }
+    ],
+    "BRW-003": [
+      {
+        "testId": "E2E-001",
+        "actionId": "E2E-001-03",
+        "rationale": "Exact Franklin submit and George Franklin detail assertion."
+      }
+    ],
+    "BRW-004": [
+      {
+        "testId": "E2E-016",
+        "actionId": "E2E-016-04",
+        "rationale": "Edit Owner click and prefilled form assertion on UI-created owner."
+      }
+    ],
+    "BRW-006": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-04",
+        "rationale": "Add New Pet link click and pet form assertion."
+      }
+    ],
+    "BRW-007": [
+      {
+        "testId": "E2E-021",
+        "actionId": "E2E-021-06",
+        "rationale": "Blank-name constraint observed in simultaneous empty submission tested independently."
+      },
+      {
+        "testId": "E2E-028",
+        "actionId": "E2E-028-06",
+        "rationale": "Missing-birthday constraint observed in simultaneous empty submission tested independently."
+      }
+    ],
+    "BRW-008": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-07",
+        "rationale": "Edit Pet link opens persisted pet and checks prefilled values."
+      }
+    ],
+    "BRW-009": [
+      {
+        "testId": "E2E-040",
+        "actionId": "E2E-040-07",
+        "rationale": "Add Visit link opens New Visit form."
+      }
+    ],
+    "BRW-010": [
+      {
+        "testId": "E2E-041",
+        "actionId": "E2E-041-09",
+        "rationale": "Blank description submitted with valid tomorrow date; browser snapshot also defaulted to tomorrow."
+      }
+    ],
+    "BRW-011": [
+      {
+        "testId": "E2E-002",
+        "actionId": "E2E-002-03",
+        "rationale": "Empty surname search shows owner rows."
+      }
+    ],
+    "BRW-012": [
+      {
+        "testId": "E2E-004",
+        "actionId": "E2E-004-03",
+        "rationale": "Unknown surname submit asserts not-found error."
+      }
+    ],
+    "BRW-013": [
+      {
+        "testId": "E2E-019",
+        "actionId": "E2E-019-02",
+        "rationale": "Explicit Add Owner link click checks blank form."
+      }
+    ],
+    "BRW-014": [
+      {
+        "testId": "E2E-011",
+        "actionId": "E2E-011-02",
+        "rationale": "Empty owner submission checks five required-field errors."
+      }
+    ],
+    "BRW-015": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-01",
+        "rationale": "Vets route open checks seeded veterinarian rows."
+      }
+    ],
+    "BRW-016": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-06",
+        "rationale": "Intentional exception route checks internal server error."
+      }
+    ],
+    "BRW-017": [
+      {
+        "testId": "E2E-054",
+        "actionId": "E2E-054-01",
+        "rationale": "Unknown route checks404 template."
+      }
+    ],
+    "BRW-018": [
+      {
+        "testId": "E2E-051",
+        "actionId": "E2E-051-02",
+        "rationale": "Mobile menu expand checks visible menu."
+      }
+    ],
+    "BRW-019": [
+      {
+        "testId": "E2E-051",
+        "actionId": "E2E-051-03",
+        "rationale": "Mobile menu collapse checks hidden menu."
+      }
+    ],
+    "BRW-020": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-02",
+        "rationale": "Owner Next click checks second page and distinct names."
+      }
+    ],
+    "BRW-021": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-04",
+        "rationale": "Owner Last click checks nonempty final page."
+      }
+    ],
+    "BRW-022": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-03",
+        "rationale": "Owner Previous click checks first page restoration."
+      }
+    ],
+    "BRW-023": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-05",
+        "rationale": "Owner First click checks initial names restored."
+      }
+    ],
+    "BRW-024": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-06",
+        "rationale": "Owner number2 click checks page2 URL and changed rows."
+      }
+    ],
+    "BRW-025": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-02",
+        "rationale": "Vets Next click checks Sharon Jenkins final row."
+      }
+    ],
+    "BRW-026": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-05",
+        "rationale": "Vets Previous click checks first five rows."
+      }
+    ],
+    "BRW-027": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-06",
+        "rationale": "Vets number2 click checks page2 URL and one row."
+      }
+    ],
+    "BRW-028": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-05",
+        "rationale": "Brand home click checks Welcome heading."
+      }
+    ],
+    "BRW-029": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-03",
+        "rationale": "Nav veterinarians click checks list heading."
+      }
+    ],
+    "BRW-030": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-04",
+        "rationale": "Nav Home click checks Welcome heading."
+      }
+    ],
+    "BRW-031": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-06",
+        "rationale": "Nav Error click checks error text."
+      }
+    ],
+    "BRW-005": [
+      {
+        "testId": "E2E-056",
+        "actionId": "E2E-056-06",
+        "rationale": "Edit-mode alphabetic telephone submit explicitly expects10-digit error and exactly one error;05607 independently checks original telephone persisted."
+      }
+    ],
+    "MVC-022": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-04",
+        "rationale": "Owner details Add New Pet invokes GET create form; heading visible."
+      }
+    ],
+    "MVC-023": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-06",
+        "rationale": "New pet submit invokes create POST; owner pet row contains named pet and birth date."
+      }
+    ],
+    "MVC-024": [
+      {
+        "testId": "E2E-021",
+        "actionId": "E2E-021-06",
+        "rationale": "New pet blank-name submit checks name validation error."
+      },
+      {
+        "testId": "E2E-028",
+        "actionId": "E2E-028-06",
+        "rationale": "New pet missing-birthday submit checks birthday error independently."
+      }
+    ],
+    "MVC-025": [
+      {
+        "testId": "E2E-022",
+        "actionId": "E2E-022-06",
+        "rationale": "31-character name submit checks maximum length violation."
+      }
+    ],
+    "MVC-026": [
+      {
+        "testId": "E2E-024",
+        "actionId": "E2E-024-09",
+        "rationale": "Second new pet same name submits duplicate and expects duplicate-name error."
+      },
+      {
+        "testId": "E2E-025",
+        "actionId": "E2E-025-09",
+        "rationale": "Case-variant duplicate new pet expects duplicate-name error."
+      }
+    ],
+    "MVC-027": [
+      {
+        "testId": "E2E-023",
+        "actionId": "E2E-023-06",
+        "rationale": "2099 birthday submitted; form expects future-birthday error."
+      }
+    ],
+    "MVC-028": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-07",
+        "rationale": "Edit Pet link invokes GET edit form; persisted name prefilled."
+      }
+    ],
+    "MVC-029": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-09",
+        "rationale": "Edit submit changes name/date/type; named row checks changed birthday/type."
+      },
+      {
+        "testId": "E2E-033",
+        "actionId": "E2E-033-09",
+        "rationale": "Same-name edit changes date and checks modified date persists; own-name allowed branch."
+      }
+    ],
+    "MVC-030": [
+      {
+        "testId": "E2E-026",
+        "actionId": "E2E-026-09",
+        "rationale": "Edited pet blank name rejected with expected field error."
+      },
+      {
+        "testId": "E2E-031",
+        "actionId": "E2E-031-09",
+        "rationale": "Edited pet31-character name rejected with expected size error."
+      },
+      {
+        "testId": "E2E-032",
+        "actionId": "E2E-032-09",
+        "rationale": "Edited pet absent birthday rejected with expected date error."
+      }
+    ],
+    "MVC-031": [
+      {
+        "testId": "E2E-027",
+        "actionId": "E2E-027-12",
+        "rationale": "Two existing pets; second edited to first name and duplicate error asserted."
+      }
+    ],
+    "MVC-032": [
+      {
+        "testId": "E2E-030",
+        "actionId": "E2E-030-09",
+        "rationale": "Existing pet edited to2099 birthday and future constraint error asserted."
+      }
+    ],
+    "MVC-033": [
+      {
+        "testId": "E2E-040",
+        "actionId": "E2E-040-07",
+        "rationale": "Add Visit link invokes GET new visit; heading visible."
+      }
+    ],
+    "MVC-034": [
+      {
+        "testId": "E2E-040",
+        "actionId": "E2E-040-09",
+        "rationale": "Tomorrow date POST succeeds; owner detail and saved description row visible."
+      }
+    ],
+    "MVC-035": [
+      {
+        "testId": "E2E-041",
+        "actionId": "E2E-041-09",
+        "rationale": "Valid future date with empty description submitted; description field error asserted."
+      }
+    ],
+    "MVC-036": [
+      {
+        "testId": "E2E-042",
+        "actionId": "E2E-042-09",
+        "rationale": "256-character description submitted; description size error asserted."
+      }
+    ],
+    "MVC-037": [
+      {
+        "testId": "E2E-045",
+        "actionId": "E2E-045-09",
+        "rationale": "Native validation bypassed intentionally inside POM; past date POST yields Future constraint error."
+      },
+      {
+        "testId": "E2E-046",
+        "actionId": "E2E-046-09",
+        "rationale": "Native validation bypassed intentionally inside POM; today date POST yields Future constraint error."
+      }
+    ],
+    "MVC-043": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-06",
+        "rationale": "CrashController showcase exception via Error nav;500 template text asserted."
+      }
+    ],
+    "MVC-050": [
+      {
+        "testId": "E2E-047",
+        "actionId": "E2E-047-09",
+        "rationale": "Optional date intentionally cleared and description supplied; POST accepted, owner detail and description visible. No NotNull annotation: positive case preserves actual app contract."
+      }
+    ]
+  },
+  "currentlyUnreferenced": {
+    "TPL-search-single": [
+      {
+        "testId": "E2E-001",
+        "actionId": "E2E-001-03",
+        "rationale": "Find Owner submits Franklin and asserts George Franklin details."
+      }
+    ],
+    "TPL-search-multiple": [
+      {
+        "testId": "E2E-003",
+        "actionId": "E2E-003-03",
+        "rationale": "Find Owner submits Davis and asserts Betty/Harold list."
+      }
+    ],
+    "TPL-search-all": [
+      {
+        "testId": "E2E-002",
+        "actionId": "E2E-002-03",
+        "rationale": "Empty query submitted; five result rows checked."
+      }
+    ],
+    "TPL-search-none": [
+      {
+        "testId": "E2E-004",
+        "actionId": "E2E-004-03",
+        "rationale": "Missing surname submit displays not-found error."
+      }
+    ],
+    "TPL-owner-select": [
+      {
+        "testId": "E2E-006",
+        "actionId": "E2E-006-02",
+        "rationale": "openFirstOwner clicks result owner name and checks details heading."
+      }
+    ],
+    "TPL-owner-list-page-number": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-06",
+        "rationale": "turnPage(2) clicks number and verifies query and changed names."
+      }
+    ],
+    "TPL-owner-list-page-first": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-05",
+        "rationale": "turnPage(First) restores initial names."
+      }
+    ],
+    "TPL-owner-list-page-previous": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-03",
+        "rationale": "turnPage(Previous) restores initial names/page1."
+      }
+    ],
+    "TPL-owner-list-page-next": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-02",
+        "rationale": "turnPage(Next) checks page2 and different names."
+      }
+    ],
+    "TPL-owner-list-page-last": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-04",
+        "rationale": "turnPage(Last) checks numeric page and 1..5 final rows."
+      }
+    ],
+    "TPL-owner-edit": [
+      {
+        "testId": "E2E-016",
+        "actionId": "E2E-016-04",
+        "rationale": "openEdit clicks Edit Owner and checks original prefilled field values."
+      }
+    ],
+    "TPL-owner-update": [
+      {
+        "testId": "E2E-016",
+        "actionId": "E2E-016-06",
+        "rationale": "submit saves generated owner edits; updated values visible."
+      }
+    ],
+    "TPL-owner-create-invalid": [
+      {
+        "testId": "E2E-011",
+        "actionId": "E2E-011-02",
+        "rationale": "submit blank new owner; all five field errors checked."
+      }
+    ],
+    "TPL-owner-update-invalid": [
+      {
+        "testId": "E2E-017",
+        "actionId": "E2E-017-06",
+        "rationale": "submit blank edit owner; all five field errors checked."
+      }
+    ],
+    "BRW-001": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-01",
+        "rationale": "Home GET and Welcome assertion match observed action."
+      }
+    ],
+    "BRW-002": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-02",
+        "rationale": "Common Find Owners navigation and destination assertion."
+      }
+    ],
+    "BRW-003": [
+      {
+        "testId": "E2E-001",
+        "actionId": "E2E-001-03",
+        "rationale": "Exact Franklin submit and George Franklin detail assertion."
+      }
+    ],
+    "BRW-004": [
+      {
+        "testId": "E2E-016",
+        "actionId": "E2E-016-04",
+        "rationale": "Edit Owner click and prefilled form assertion on UI-created owner."
+      }
+    ],
+    "BRW-006": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-04",
+        "rationale": "Add New Pet link click and pet form assertion."
+      }
+    ],
+    "BRW-007": [
+      {
+        "testId": "E2E-021",
+        "actionId": "E2E-021-06",
+        "rationale": "Blank-name constraint observed in simultaneous empty submission tested independently."
+      },
+      {
+        "testId": "E2E-028",
+        "actionId": "E2E-028-06",
+        "rationale": "Missing-birthday constraint observed in simultaneous empty submission tested independently."
+      }
+    ],
+    "BRW-008": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-07",
+        "rationale": "Edit Pet link opens persisted pet and checks prefilled values."
+      }
+    ],
+    "BRW-009": [
+      {
+        "testId": "E2E-040",
+        "actionId": "E2E-040-07",
+        "rationale": "Add Visit link opens New Visit form."
+      }
+    ],
+    "BRW-010": [
+      {
+        "testId": "E2E-041",
+        "actionId": "E2E-041-09",
+        "rationale": "Blank description submitted with valid tomorrow date; browser snapshot also defaulted to tomorrow."
+      }
+    ],
+    "BRW-011": [
+      {
+        "testId": "E2E-002",
+        "actionId": "E2E-002-03",
+        "rationale": "Empty surname search shows owner rows."
+      }
+    ],
+    "BRW-012": [
+      {
+        "testId": "E2E-004",
+        "actionId": "E2E-004-03",
+        "rationale": "Unknown surname submit asserts not-found error."
+      }
+    ],
+    "BRW-013": [
+      {
+        "testId": "E2E-019",
+        "actionId": "E2E-019-02",
+        "rationale": "Explicit Add Owner link click checks blank form."
+      }
+    ],
+    "BRW-014": [
+      {
+        "testId": "E2E-011",
+        "actionId": "E2E-011-02",
+        "rationale": "Empty owner submission checks five required-field errors."
+      }
+    ],
+    "BRW-015": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-01",
+        "rationale": "Vets route open checks seeded veterinarian rows."
+      }
+    ],
+    "BRW-016": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-06",
+        "rationale": "Intentional exception route checks internal server error."
+      }
+    ],
+    "BRW-017": [
+      {
+        "testId": "E2E-054",
+        "actionId": "E2E-054-01",
+        "rationale": "Unknown route checks404 template."
+      }
+    ],
+    "BRW-018": [
+      {
+        "testId": "E2E-051",
+        "actionId": "E2E-051-02",
+        "rationale": "Mobile menu expand checks visible menu."
+      }
+    ],
+    "BRW-019": [
+      {
+        "testId": "E2E-051",
+        "actionId": "E2E-051-03",
+        "rationale": "Mobile menu collapse checks hidden menu."
+      }
+    ],
+    "BRW-020": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-02",
+        "rationale": "Owner Next click checks second page and distinct names."
+      }
+    ],
+    "BRW-021": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-04",
+        "rationale": "Owner Last click checks nonempty final page."
+      }
+    ],
+    "BRW-022": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-03",
+        "rationale": "Owner Previous click checks first page restoration."
+      }
+    ],
+    "BRW-023": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-05",
+        "rationale": "Owner First click checks initial names restored."
+      }
+    ],
+    "BRW-024": [
+      {
+        "testId": "E2E-007",
+        "actionId": "E2E-007-06",
+        "rationale": "Owner number2 click checks page2 URL and changed rows."
+      }
+    ],
+    "BRW-025": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-02",
+        "rationale": "Vets Next click checks Sharon Jenkins final row."
+      }
+    ],
+    "BRW-026": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-05",
+        "rationale": "Vets Previous click checks first five rows."
+      }
+    ],
+    "BRW-027": [
+      {
+        "testId": "E2E-052",
+        "actionId": "E2E-052-06",
+        "rationale": "Vets number2 click checks page2 URL and one row."
+      }
+    ],
+    "BRW-028": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-05",
+        "rationale": "Brand home click checks Welcome heading."
+      }
+    ],
+    "BRW-029": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-03",
+        "rationale": "Nav veterinarians click checks list heading."
+      }
+    ],
+    "BRW-030": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-04",
+        "rationale": "Nav Home click checks Welcome heading."
+      }
+    ],
+    "BRW-031": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-06",
+        "rationale": "Nav Error click checks error text."
+      }
+    ],
+    "MVC-022": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-04",
+        "rationale": "Owner details Add New Pet invokes GET create form; heading visible."
+      }
+    ],
+    "MVC-023": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-06",
+        "rationale": "New pet submit invokes create POST; owner pet row contains named pet and birth date."
+      }
+    ],
+    "MVC-024": [
+      {
+        "testId": "E2E-021",
+        "actionId": "E2E-021-06",
+        "rationale": "New pet blank-name submit checks name validation error."
+      },
+      {
+        "testId": "E2E-028",
+        "actionId": "E2E-028-06",
+        "rationale": "New pet missing-birthday submit checks birthday error independently."
+      }
+    ],
+    "MVC-025": [
+      {
+        "testId": "E2E-022",
+        "actionId": "E2E-022-06",
+        "rationale": "31-character name submit checks maximum length violation."
+      }
+    ],
+    "MVC-026": [
+      {
+        "testId": "E2E-024",
+        "actionId": "E2E-024-09",
+        "rationale": "Second new pet same name submits duplicate and expects duplicate-name error."
+      },
+      {
+        "testId": "E2E-025",
+        "actionId": "E2E-025-09",
+        "rationale": "Case-variant duplicate new pet expects duplicate-name error."
+      }
+    ],
+    "MVC-027": [
+      {
+        "testId": "E2E-023",
+        "actionId": "E2E-023-06",
+        "rationale": "2099 birthday submitted; form expects future-birthday error."
+      }
+    ],
+    "MVC-028": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-07",
+        "rationale": "Edit Pet link invokes GET edit form; persisted name prefilled."
+      }
+    ],
+    "MVC-029": [
+      {
+        "testId": "E2E-020",
+        "actionId": "E2E-020-09",
+        "rationale": "Edit submit changes name/date/type; named row checks changed birthday/type."
+      },
+      {
+        "testId": "E2E-033",
+        "actionId": "E2E-033-09",
+        "rationale": "Same-name edit changes date and checks modified date persists; own-name allowed branch."
+      }
+    ],
+    "MVC-030": [
+      {
+        "testId": "E2E-026",
+        "actionId": "E2E-026-09",
+        "rationale": "Edited pet blank name rejected with expected field error."
+      },
+      {
+        "testId": "E2E-031",
+        "actionId": "E2E-031-09",
+        "rationale": "Edited pet31-character name rejected with expected size error."
+      },
+      {
+        "testId": "E2E-032",
+        "actionId": "E2E-032-09",
+        "rationale": "Edited pet absent birthday rejected with expected date error."
+      }
+    ],
+    "MVC-031": [
+      {
+        "testId": "E2E-027",
+        "actionId": "E2E-027-12",
+        "rationale": "Two existing pets; second edited to first name and duplicate error asserted."
+      }
+    ],
+    "MVC-032": [
+      {
+        "testId": "E2E-030",
+        "actionId": "E2E-030-09",
+        "rationale": "Existing pet edited to2099 birthday and future constraint error asserted."
+      }
+    ],
+    "MVC-033": [
+      {
+        "testId": "E2E-040",
+        "actionId": "E2E-040-07",
+        "rationale": "Add Visit link invokes GET new visit; heading visible."
+      }
+    ],
+    "MVC-034": [
+      {
+        "testId": "E2E-040",
+        "actionId": "E2E-040-09",
+        "rationale": "Tomorrow date POST succeeds; owner detail and saved description row visible."
+      }
+    ],
+    "MVC-035": [
+      {
+        "testId": "E2E-041",
+        "actionId": "E2E-041-09",
+        "rationale": "Valid future date with empty description submitted; description field error asserted."
+      }
+    ],
+    "MVC-036": [
+      {
+        "testId": "E2E-042",
+        "actionId": "E2E-042-09",
+        "rationale": "256-character description submitted; description size error asserted."
+      }
+    ],
+    "MVC-037": [
+      {
+        "testId": "E2E-045",
+        "actionId": "E2E-045-09",
+        "rationale": "Native validation bypassed intentionally inside POM; past date POST yields Future constraint error."
+      },
+      {
+        "testId": "E2E-046",
+        "actionId": "E2E-046-09",
+        "rationale": "Native validation bypassed intentionally inside POM; today date POST yields Future constraint error."
+      }
+    ],
+    "MVC-043": [
+      {
+        "testId": "E2E-050",
+        "actionId": "E2E-050-06",
+        "rationale": "CrashController showcase exception via Error nav;500 template text asserted."
+      }
+    ],
+    "MVC-050": [
+      {
+        "testId": "E2E-047",
+        "actionId": "E2E-047-09",
+        "rationale": "Optional date intentionally cleared and description supplied; POST accepted, owner detail and description visible. No NotNull annotation: positive case preserves actual app contract."
+      }
+    ]
+  },
+  "gaps": [],
+  "corrections": [
+    {
+      "testId": "E2E-050",
+      "actionId": "E2E-050-06",
+      "removeSourceRef": "MVC-044",
+      "addSourceRef": "MVC-043",
+      "reason": "MVC-044 is excluded veterinarian JSON API; MVC-043 is intentional crash route."
+    }
+  ],
+  "excludedReview": [
+    {
+      "ids": [
+        "MVC-044"
+      ],
+      "decision": "Justified HTML E2E boundary: machine-readable API has no interactive page."
+    },
+    {
+      "ids": [
+        "MVC-045",
+        "MVC-048"
+      ],
+      "decision": "Justified normal UI boundary: request/DOM forgery needed; legitimate selectable types covered E2E-029."
+    },
+    {
+      "ids": [
+        "MVC-046"
+      ],
+      "decision": "Justified concurrency guard branch cannot be induced by sequential normal browser action; visible duplicate behavior covered create/edit cases."
+    },
+    {
+      "ids": [
+        "MVC-047",
+        "TPL-delete"
+      ],
+      "decision": "Verified no delete route/control exists; no destructive test invented."
+    },
+    {
+      "ids": [
+        "TPL-static-assets",
+        "TPL-external-links"
+      ],
+      "decision": "Assets are not standalone UI actions; no external application link exists."
+    }
+  ],
+  "agentSkillReview": {
+    "result": "Instructions preserve canonical YAML, IDs, POM/evidence boundaries, serial browser execution and fail-closed completion; environmental corrections match observed failures.",
+    "limitations": [
+      "No schema can prove sourceRefs semantic correspondence; preserve independent reconciliation review.",
+      "Console error absence is not a required expectation in current flash-expiry test; report confirmed existing defect explicitly."
+    ]
+  },
+  "resolvedGaps": [
+    {
+      "discoveryId": "BRW-005",
+      "testId": "E2E-056",
+      "actionId": "E2E-056-06",
+      "reason": "Dedicated edit-mode alphabetic telephone scenario added and independently reviewed."
+    }
+  ]
+}

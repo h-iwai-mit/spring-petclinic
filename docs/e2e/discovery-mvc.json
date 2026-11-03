@@ -1,0 +1,671 @@
+{
+  "agent": "A / MVC analysis",
+  "pages": [
+    {
+      "pageId": "home",
+      "kind": "html"
+    },
+    {
+      "pageId": "owner-search",
+      "kind": "html"
+    },
+    {
+      "pageId": "owner-list",
+      "kind": "html"
+    },
+    {
+      "pageId": "owner-form",
+      "kind": "html"
+    },
+    {
+      "pageId": "owner-details",
+      "kind": "html"
+    },
+    {
+      "pageId": "error",
+      "kind": "html"
+    },
+    {
+      "pageId": "pet-form",
+      "kind": "html"
+    },
+    {
+      "pageId": "visit-form",
+      "kind": "html"
+    },
+    {
+      "pageId": "vets",
+      "kind": "html"
+    },
+    {
+      "pageId": "vets-api",
+      "kind": "json"
+    }
+  ],
+  "actions": [
+    {
+      "discoveryId": "MVC-001",
+      "pageId": "home",
+      "label": "Open home",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/system/WelcomeController.java:welcome"
+      ],
+      "method": "GET",
+      "url": "/",
+      "expected": "welcome template",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-002",
+      "pageId": "owner-search",
+      "label": "Open owner search",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:initFindForm"
+      ],
+      "method": "GET",
+      "url": "/owners/find",
+      "expected": "findOwners template",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-003",
+      "pageId": "owner-search",
+      "label": "Find one owner",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+      ],
+      "method": "GET",
+      "url": "/owners?lastName=Franklin",
+      "expected": "redirect to single owner detail",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-004",
+      "pageId": "owner-search",
+      "label": "Find multiple owners",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+      ],
+      "method": "GET",
+      "url": "/owners?lastName=Davis",
+      "expected": "owners list",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-005",
+      "pageId": "owner-search",
+      "label": "Find no owners",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+      ],
+      "method": "GET",
+      "url": "/owners?lastName=NoSuchOwner",
+      "expected": "findOwners and lastName notFound error",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-006",
+      "pageId": "owner-search",
+      "label": "Find all owners with empty query",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+      ],
+      "method": "GET",
+      "url": "/owners?lastName=",
+      "expected": "paginated owners list",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-007",
+      "pageId": "owner-search",
+      "label": "Find all owners with omitted query",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+      ],
+      "method": "GET",
+      "url": "/owners",
+      "expected": "paginated owners list",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-008",
+      "pageId": "owner-search",
+      "label": "Trim search whitespace",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+      ],
+      "method": "GET",
+      "url": "/owners?lastName=%20Franklin%20",
+      "expected": "same single owner as Franklin",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-009",
+      "pageId": "owner-list",
+      "label": "Owner pagination",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:addPaginationModel",
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:findPaginatedForOwnersLastName"
+      ],
+      "method": "GET",
+      "url": "/owners?page=2",
+      "expected": "next five owners and currentPage 2",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-010",
+      "pageId": "owner-list",
+      "label": "Owner low page redirect",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+      ],
+      "method": "GET",
+      "url": "/owners?page=0",
+      "expected": "redirect page=1 preserving nonempty lastName",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-011",
+      "pageId": "owner-list",
+      "label": "Owner high page redirect",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processFindForm"
+      ],
+      "method": "GET",
+      "url": "/owners?page=99999",
+      "expected": "redirect page=1 preserving nonempty lastName",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-012",
+      "pageId": "owner-form",
+      "label": "Open create owner",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:initCreationForm"
+      ],
+      "method": "GET",
+      "url": "/owners/new",
+      "expected": "empty owner form",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-013",
+      "pageId": "owner-form",
+      "label": "Create owner",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processCreationForm"
+      ],
+      "method": "POST",
+      "url": "/owners/new",
+      "expected": "saved owner and New Owner Created flash",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-014",
+      "pageId": "owner-form",
+      "label": "Reject blank owner fields",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/Owner.java:address,city,telephone",
+        "src/main/java/org/springframework/samples/petclinic/model/Person.java:firstName,lastName",
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processCreationForm"
+      ],
+      "method": "POST",
+      "url": "/owners/new",
+      "expected": "all five fields reject blank",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-015",
+      "pageId": "owner-form",
+      "label": "Reject invalid telephone",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/Owner.java:telephone",
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processCreationForm"
+      ],
+      "method": "POST",
+      "url": "/owners/new",
+      "expected": "telephone requires exactly ten digits",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-016",
+      "pageId": "owner-form",
+      "label": "Reject oversized owner fields",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/Owner.java:address,city",
+        "src/main/java/org/springframework/samples/petclinic/model/Person.java:firstName,lastName"
+      ],
+      "method": "POST",
+      "url": "/owners/new",
+      "expected": "firstName/lastName <=30, address<=255, city<=80",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-017",
+      "pageId": "owner-details",
+      "label": "Open owner detail",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:showOwner"
+      ],
+      "method": "GET",
+      "url": "/owners/{ownerId}",
+      "expected": "owner fields pets visits",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-018",
+      "pageId": "owner-form",
+      "label": "Open edit owner",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:initUpdateOwnerForm"
+      ],
+      "method": "GET",
+      "url": "/owners/{ownerId}/edit",
+      "expected": "prefilled owner form",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-019",
+      "pageId": "owner-form",
+      "label": "Update owner",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processUpdateOwnerForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/edit",
+      "expected": "saved owner and Owner Values Updated flash",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-020",
+      "pageId": "owner-form",
+      "label": "Reject invalid owner update",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processUpdateOwnerForm",
+        "src/main/java/org/springframework/samples/petclinic/owner/Owner.java:telephone",
+        "src/main/java/org/springframework/samples/petclinic/model/Person.java:firstName,lastName"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/edit",
+      "expected": "same bean validation as creation; invalid update stays form",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-021",
+      "pageId": "error",
+      "label": "Missing owner",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:findOwner,showOwner"
+      ],
+      "method": "GET",
+      "url": "/owners/2147483647",
+      "expected": "exception rendered by error template",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-022",
+      "pageId": "pet-form",
+      "label": "Open create pet",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:initCreationForm"
+      ],
+      "method": "GET",
+      "url": "/owners/{ownerId}/pets/new",
+      "expected": "new pet form with types",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-023",
+      "pageId": "pet-form",
+      "label": "Create pet",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processCreationForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/new",
+      "expected": "saved pet, detail redirect, New Pet has been Added flash",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-024",
+      "pageId": "pet-form",
+      "label": "Reject blank pet fields",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetValidator.java:validate"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/new",
+      "expected": "name/birthDate required; type required if null for new pet",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-025",
+      "pageId": "pet-form",
+      "label": "Reject oversized pet name",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetValidator.java:validate"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/new",
+      "expected": "name maximum 30 characters",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-026",
+      "pageId": "pet-form",
+      "label": "Reject duplicate pet name",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processCreationForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/new",
+      "expected": "case-insensitive duplicate for same owner rejected",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-027",
+      "pageId": "pet-form",
+      "label": "Reject future pet birthday",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processCreationForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/new",
+      "expected": "birthDate invalid date error",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-028",
+      "pageId": "pet-form",
+      "label": "Open edit pet",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:initUpdateForm"
+      ],
+      "method": "GET",
+      "url": "/owners/{ownerId}/pets/{petId}/edit",
+      "expected": "prefilled pet form",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-029",
+      "pageId": "pet-form",
+      "label": "Update pet",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processUpdateForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/{petId}/edit",
+      "expected": "saved pet, detail redirect, Pet details has been edited flash",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-030",
+      "pageId": "pet-form",
+      "label": "Reject invalid pet update",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processUpdateForm",
+        "src/main/java/org/springframework/samples/petclinic/owner/PetValidator.java:validate"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/{petId}/edit",
+      "expected": "required name/birthDate and <=30 name enforced",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-031",
+      "pageId": "pet-form",
+      "label": "Reject duplicate pet update",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processUpdateForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/{petId}/edit",
+      "expected": "another pet name for same owner rejected; unchanged own name accepted",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-032",
+      "pageId": "pet-form",
+      "label": "Reject future birthday update",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:processUpdateForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/{petId}/edit",
+      "expected": "future birthDate error",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-033",
+      "pageId": "visit-form",
+      "label": "Open visit form",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:initNewVisitForm,loadPetWithVisit,minVisitDate"
+      ],
+      "method": "GET",
+      "url": "/owners/{ownerId}/pets/{petId}/visits/new",
+      "expected": "pet context; tomorrow default date and min date",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-034",
+      "pageId": "visit-form",
+      "label": "Book visit",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:processNewVisitForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/{petId}/visits/new",
+      "expected": "saved visit, detail redirect, Your visit has been booked flash",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-035",
+      "pageId": "visit-form",
+      "label": "Reject blank visit description",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/Visit.java:description",
+        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:processNewVisitForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/{petId}/visits/new",
+      "expected": "description must not be blank",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-036",
+      "pageId": "visit-form",
+      "label": "Reject oversized visit description",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/Visit.java:description"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/{petId}/visits/new",
+      "expected": "description maximum 255 characters",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-037",
+      "pageId": "visit-form",
+      "label": "Reject past or today visit date",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:processNewVisitForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/{petId}/visits/new",
+      "expected": "date must be strictly after today; native min also blocks submit",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-038",
+      "pageId": "error",
+      "label": "Missing pet for visit",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:loadPetWithVisit"
+      ],
+      "method": "GET",
+      "url": "/owners/{ownerId}/pets/2147483647/visits/new",
+      "expected": "exception rendered as error",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-039",
+      "pageId": "vets",
+      "label": "Open veterinarian list",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/vet/VetController.java:showVetList"
+      ],
+      "method": "GET",
+      "url": "/vets.html",
+      "expected": "five veterinarians, specialties or none",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-040",
+      "pageId": "vets",
+      "label": "Veterinarian pagination",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/vet/VetController.java:showVetList,findPaginated"
+      ],
+      "method": "GET",
+      "url": "/vets.html?page=2",
+      "expected": "remaining veterinarians and currentPage 2",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-041",
+      "pageId": "vets",
+      "label": "Veterinarian low page redirect",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/vet/VetController.java:showVetList"
+      ],
+      "method": "GET",
+      "url": "/vets.html?page=0",
+      "expected": "redirect page=1",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-042",
+      "pageId": "vets",
+      "label": "Veterinarian high page redirect",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/vet/VetController.java:showVetList"
+      ],
+      "method": "GET",
+      "url": "/vets.html?page=99999",
+      "expected": "redirect page=1",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-043",
+      "pageId": "error",
+      "label": "Trigger showcase error",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/system/CrashController.java:triggerException"
+      ],
+      "method": "GET",
+      "url": "/oups",
+      "expected": "500 error template",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-044",
+      "pageId": "vets-api",
+      "label": "Veterinarian JSON representation",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/vet/VetController.java:showResourcesVetList"
+      ],
+      "method": "GET",
+      "url": "/vets",
+      "expected": "JSON vets resource",
+      "classification": "excluded",
+      "reason": "Machine-readable API with no HTML screen or interactive control; existing VetControllerTests cover this endpoint. Browser E2E scope is HTML UI."
+    },
+    {
+      "discoveryId": "MVC-045",
+      "pageId": "owner-form",
+      "label": "Owner ID mismatch defense",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java:processUpdateOwnerForm,setAllowedFields"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/edit",
+      "expected": "mismatch guard",
+      "classification": "excluded",
+      "reason": "Normal HTML form cannot alter ID: model loads URL owner, id and *.id are disallowed by WebDataBinder. Forged-request security guard is outside UI action set."
+    },
+    {
+      "discoveryId": "MVC-046",
+      "pageId": "pet-form",
+      "label": "Database duplicate race fallback",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:isDuplicatePetNameViolation,processCreationForm,processUpdateForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/new",
+      "expected": "same duplicate name error",
+      "classification": "excluded",
+      "reason": "Database concurrent uniqueness-race handling has same visible outcome as duplicate action MVC-026/MVC-031. Forced concurrent DB exception is not a distinct browser UI operation."
+    },
+    {
+      "discoveryId": "MVC-047",
+      "pageId": "owner-details",
+      "label": "Delete owner/pet/visit",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java",
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java",
+        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java"
+      ],
+      "method": "DELETE",
+      "url": "none",
+      "expected": "no delete route",
+      "classification": "excluded",
+      "reason": "Source inspection finds no delete mappings or UI actions; no destructive operation invented."
+    },
+    {
+      "discoveryId": "MVC-048",
+      "pageId": "pet-form",
+      "label": "Select missing pet type",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetValidator.java:validate"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/new",
+      "expected": "null type required",
+      "classification": "excluded",
+      "reason": "HTML select contains only real persisted pet types and defaults to first; null type requires forged DOM/request. Selecting each legitimate type remains in form operation coverage."
+    },
+    {
+      "discoveryId": "MVC-049",
+      "pageId": "error",
+      "label": "Missing pet edit",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/PetController.java:findPet,initUpdateForm"
+      ],
+      "method": "GET",
+      "url": "/owners/{ownerId}/pets/2147483647/edit",
+      "expected": "missing pet cannot populate edit form; error template",
+      "classification": "target"
+    },
+    {
+      "discoveryId": "MVC-050",
+      "pageId": "visit-form",
+      "label": "Blank visit date",
+      "sourceRefs": [
+        "src/main/java/org/springframework/samples/petclinic/owner/Visit.java:date",
+        "src/main/java/org/springframework/samples/petclinic/owner/VisitController.java:processNewVisitForm"
+      ],
+      "method": "POST",
+      "url": "/owners/{ownerId}/pets/{petId}/visits/new",
+      "expected": "Blank date is accepted: booking redirects to owner detail and saves a visit with null date; description remains visible. This captures current application behavior, not an inferred required constraint.",
+      "classification": "target"
+    }
+  ],
+  "notes": [
+    "All 17 annotated route methods inspected; no delete or visit-update routes.",
+    "Owner first/last name maximum is 30, address255, city80, telephone exactly ten digits.",
+    "Missing pet edit fails during template rendering; reconcile browser outcome.",
+    "Visit date has no NotNull; native min blocks dates <=today. Empty date validation is absent, do not invent it.",
+    "No ControllerAdvice; Boot error view handles exceptions."
+  ]
+}

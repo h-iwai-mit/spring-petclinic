@@ -1,0 +1,146 @@
+{
+  "type": "object",
+  "required": [
+    "version",
+    "pages",
+    "tests"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "pageId"
+        ],
+        "properties": {
+          "pageId": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "tests": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "testId",
+          "pageId",
+          "preconditions",
+          "pageObject",
+          "testFile",
+          "actions"
+        ],
+        "properties": {
+          "testId": {
+            "type": "string",
+            "pattern": "^E2E-[0-9]{3}$"
+          },
+          "pageId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "preconditions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "pageObject": {
+            "type": "string",
+            "minLength": 1
+          },
+          "testFile": {
+            "type": "string",
+            "minLength": 1
+          },
+          "actions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "actionId",
+                "pageId",
+                "sourceRefs",
+                "operation",
+                "expected",
+                "sourceState",
+                "targetState",
+                "pageObject",
+                "evidence"
+              ],
+              "properties": {
+                "actionId": {
+                  "type": "string",
+                  "pattern": "^E2E-[0-9]{3}-[a-zA-Z0-9-]+$"
+                },
+                "pageId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "pageObject": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sourceRefs": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "operation": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "expected": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sourceState": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "targetState": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "evidence": {
+                  "type": "object",
+                  "required": [
+                    "before",
+                    "after"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "before": {
+                      "const": true
+                    },
+                    "after": {
+                      "const": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

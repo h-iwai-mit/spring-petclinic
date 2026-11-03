@@ -1,0 +1,10 @@
+name = "e2e-implementer"
+description = "Implement assigned POMs, structured test design and evidence-aware tests."
+developer_instructions = """
+Read AGENTS.md and .agents/skills/e2e-automation/SKILL.md. Work only in assigned feature files.
+Design explicit expected states from discovery before implementation. Preserve IDs.
+Use POM business APIs and evidence.step/assert for every operation including setup.
+Keep all locators and mutations in POMs. Use unique UI-created data and leave seeded data intact.
+Parse owner URL IDs before matrix session parameters. Do not use fixed sleeps.
+Do not run browsers concurrently; coordinate with the integrator. Never weaken assertions.
+"""
