@@ -47,3 +47,13 @@ Do not commit credentials, tokens, or local database files. Keep environment-spe
 Run Maven/MySQL integration verification and browser E2E verification sequentially as well. Concurrent Maven, Testcontainers and Chromium exhausted this Codespace and caused renderer crashes; keep failed artifacts and rerun with bounded JVM heaps.
 
 For Bootstrap mobile menu toggles, wait for the `.collapsing` class to clear before and after clicking. Visibility alone becomes true during expansion, and a second toggle is ignored until the transition finishes. Keep synchronization in the shared Navigation POM; do not add fixed sleeps or weaken the collapsed-state assertion.
+
+## Java-to-Kotlin migration
+
+- Read `.agents/skills/java-to-kotlin-migration/SKILL.md`, `docs/migration/baseline.md`, and `docs/migration/inventory.yaml` before migration work. Keep the recorded `origin/develop` SHA immutable and isolate its Java build and evidence from the candidate branch.
+- Production code belongs under `src/main/kotlin`; completion requires zero Java sources under `src/main`. Keep existing `src/test/java` tests unchanged. Do not retain, hide, exclude or call a production Java implementation from Kotlin.
+- Preserve Spring Boot, Maven, package/class/JVM API names, MVC routes, beans, JPA mappings, validation, schema, exceptions, JavaBean properties and Thymeleaf behavior. Entities are not data classes; preserve no-arg/proxy support, nullable initialization, overloads and mutable collections required by Java callers.
+- Run source checks, Maven/JUnit parity, unchanged Playwright E2E, action coverage, evidence integrity and before/after screenshot comparison mechanically. Missing baseline or candidate data is failure, not an empty successful comparison. Never disable tests, loosen assertions/validation, mask whole pages or raise thresholds to obtain green results.
+- Preserve Java type-use validation metadata with `-Xemit-jvm-type-annotations` when `javap -v` shows it on the baseline; missing type annotations can reorder rendered constraint messages even when JUnit stays green. Use deterministic UUID data and reduced motion for image parity, and document every narrow native-browser mask and measured raster tolerance.
+- Use the repository Java 17 toolchain. Preserve managed proxy and CA trust for downloads. Run Maven/Testcontainers and Chromium sequentially, monitor Docker/disk capacity, and do not rebuild the Dev Container. Record toolchain, network, capacity and baseline blockers until a successful rerun replaces them.
+- Keep migration commits scoped and push only the feature branch without force. A normal PR requires every mandatory check to pass; use a Draft PR with explicit blockers when environmental constraints prevent complete verification.
