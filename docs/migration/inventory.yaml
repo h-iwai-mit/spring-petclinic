@@ -1,0 +1,309 @@
+schemaVersion: 1
+baselineSha: 2b017679254ee77030d4a798ecc034a532eb8d0b
+baselineSourceRoot: src/main/java
+candidateSourceRoot: src/main/kotlin
+summary:
+  javaSourceCount: 30
+  kotlinSourceCount: 0
+  unmigratedCount: 30
+entries:
+  - javaPath: src/main/java/org/springframework/samples/petclinic/PetClinicApplication.java
+    className: PetClinicApplication
+    package: org.springframework.samples.petclinic
+    responsibility: Spring Boot entry point and runtime-hints registration
+    dependencies: [PetClinicRuntimeHints, SpringApplication]
+    junitTests: [PetClinicIntegrationTests, MySqlIntegrationTests, PostgresIntegrationTests]
+    e2eFeatures: [all]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/PetClinicApplication.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/PetClinicRuntimeHints.java
+    className: PetClinicRuntimeHints
+    package: org.springframework.samples.petclinic
+    responsibility: Native resource and entity serialization runtime hints
+    dependencies: [BaseEntity, Person, Vet, RuntimeHintsRegistrar]
+    junitTests: [PetClinicIntegrationTests]
+    e2eFeatures: []
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/PetClinicRuntimeHints.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/package-info.java
+    className: package-info
+    package: org.springframework.samples.petclinic
+    responsibility: Package declaration and documentation
+    dependencies: []
+    junitTests: []
+    e2eFeatures: []
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/package-info.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/model/BaseEntity.java
+    className: BaseEntity
+    package: org.springframework.samples.petclinic.model
+    responsibility: Serializable JPA identity and new-entity state
+    dependencies: [Serializable, JPA]
+    junitTests: [EntityUtils, ClinicServiceTests, OwnerTests, ValidatorTests]
+    e2eFeatures: [all-persisted-domain]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/model/BaseEntity.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/model/NamedEntity.java
+    className: NamedEntity
+    package: org.springframework.samples.petclinic.model
+    responsibility: Validated name property and string representation
+    dependencies: [BaseEntity]
+    junitTests: [PetTypeFormatterTests, PetValidatorTests, VetTests]
+    e2eFeatures: [E2E-020..033, E2E-052..053]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/model/NamedEntity.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/model/Person.java
+    className: Person
+    package: org.springframework.samples.petclinic.model
+    responsibility: Validated first and last name JPA properties
+    dependencies: [BaseEntity]
+    junitTests: [ValidatorTests, OwnerControllerTests, VetTests]
+    e2eFeatures: [E2E-001..019, E2E-040..048, E2E-052..053, E2E-056]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/model/Person.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/model/package-info.java
+    className: package-info
+    package: org.springframework.samples.petclinic.model
+    responsibility: Model package documentation
+    dependencies: []
+    junitTests: []
+    e2eFeatures: []
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/model/package-info.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/Owner.java
+    className: Owner
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Owner entity, contact data, pet aggregate, duplicate prevention, and visit addition
+    dependencies: [Person, Pet, Visit]
+    junitTests: [OwnerTests, OwnerControllerTests, ClinicServiceTests, PetClinicConcurrencyTests]
+    e2eFeatures: [E2E-001..033, E2E-040..048, E2E-055..056]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/Owner.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java
+    className: OwnerController
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Owner creation, search, pagination, update, and detail MVC flows
+    dependencies: [Owner, OwnerRepository]
+    junitTests: [OwnerControllerTests]
+    e2eFeatures: [E2E-001..019, E2E-055..056]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerController.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/OwnerRepository.java
+    className: OwnerRepository
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Owner persistence and last-name prefix search
+    dependencies: [Owner, JpaRepository]
+    junitTests: [ClinicServiceTests, PetClinicIntegrationTests, MySqlIntegrationTests, PostgresIntegrationTests, PetClinicConcurrencyTests]
+    e2eFeatures: [E2E-001..033, E2E-040..048, E2E-055..056]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/OwnerRepository.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/Pet.java
+    className: Pet
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Pet entity with birth date, type, and ordered visits
+    dependencies: [NamedEntity, PetType, Visit]
+    junitTests: [PetControllerTests, PetValidatorTests, OwnerTests, ClinicServiceTests]
+    e2eFeatures: [E2E-020..033, E2E-040..048]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/Pet.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/PetController.java
+    className: PetController
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Pet create and update MVC flows with duplicate-name and database constraint handling
+    dependencies: [Owner, Pet, PetValidator, OwnerRepository, PetTypeRepository]
+    junitTests: [PetControllerTests]
+    e2eFeatures: [E2E-020..033]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/PetController.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/PetType.java
+    className: PetType
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Pet type entity
+    dependencies: [NamedEntity]
+    junitTests: [PetTypeFormatterTests, ClinicServiceTests]
+    e2eFeatures: [E2E-020..033, E2E-040..048]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/PetType.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/PetTypeFormatter.java
+    className: PetTypeFormatter
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Pet type display and text parsing
+    dependencies: [PetType, PetTypeRepository, Formatter]
+    junitTests: [PetTypeFormatterTests]
+    e2eFeatures: [E2E-020..033, E2E-040..048]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/PetTypeFormatter.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/PetTypeRepository.java
+    className: PetTypeRepository
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Pet type persistence and ordered lookup
+    dependencies: [PetType, JpaRepository]
+    junitTests: [PetTypeFormatterTests, ClinicServiceTests]
+    e2eFeatures: [E2E-020..033, E2E-040..048]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/PetTypeRepository.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/PetValidator.java
+    className: PetValidator
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Pet name, type, and birth-date validation
+    dependencies: [Pet, Validator]
+    junitTests: [PetValidatorTests, PetControllerTests]
+    e2eFeatures: [E2E-020..033]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/PetValidator.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/Visit.java
+    className: Visit
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Visit entity, date default, and description validation
+    dependencies: [BaseEntity]
+    junitTests: [VisitControllerTests, ClinicServiceTests]
+    e2eFeatures: [E2E-040..048]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/Visit.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/VisitController.java
+    className: VisitController
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Visit creation MVC flow, owner and pet loading, minimum date, and persistence
+    dependencies: [Owner, Pet, Visit, OwnerRepository]
+    junitTests: [VisitControllerTests]
+    e2eFeatures: [E2E-040..048]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/VisitController.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/owner/package-info.java
+    className: package-info
+    package: org.springframework.samples.petclinic.owner
+    responsibility: Package declaration and documentation
+    dependencies: []
+    junitTests: []
+    e2eFeatures: []
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/owner/package-info.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/vet/Specialty.java
+    className: Specialty
+    package: org.springframework.samples.petclinic.vet
+    responsibility: Veterinary specialty entity
+    dependencies: [NamedEntity]
+    junitTests: [VetTests, ClinicServiceTests]
+    e2eFeatures: [E2E-052..053]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/Specialty.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/vet/Vet.java
+    className: Vet
+    package: org.springframework.samples.petclinic.vet
+    responsibility: Vet entity with many-to-many specialties and sorted public view
+    dependencies: [Person, Specialty, NamedEntity]
+    junitTests: [VetTests, VetControllerTests, ClinicServiceTests]
+    e2eFeatures: [E2E-052..053]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/Vet.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/vet/VetController.java
+    className: VetController
+    package: org.springframework.samples.petclinic.vet
+    responsibility: Paginated HTML vet list and serialized vet resource
+    dependencies: [Vet, Vets, VetRepository]
+    junitTests: [VetControllerTests]
+    e2eFeatures: [E2E-052..053]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/VetController.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/vet/VetRepository.java
+    className: VetRepository
+    package: org.springframework.samples.petclinic.vet
+    responsibility: Cached vet collection and paginated persistence access
+    dependencies: [Vet, Repository]
+    junitTests: [VetControllerTests, ClinicServiceTests, PetClinicIntegrationTests, MySqlIntegrationTests, PostgresIntegrationTests]
+    e2eFeatures: [E2E-052..053]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/VetRepository.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/vet/Vets.java
+    className: Vets
+    package: org.springframework.samples.petclinic.vet
+    responsibility: XML and JSON vet-list wrapper
+    dependencies: [Vet]
+    junitTests: [VetControllerTests, VetTests]
+    e2eFeatures: []
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/Vets.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/vet/package-info.java
+    className: package-info
+    package: org.springframework.samples.petclinic.vet
+    responsibility: Package declaration and documentation
+    dependencies: []
+    junitTests: []
+    e2eFeatures: []
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/vet/package-info.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/system/CacheConfiguration.java
+    className: CacheConfiguration
+    package: org.springframework.samples.petclinic.system
+    responsibility: JCache vets cache creation with statistics
+    dependencies: [JCacheManagerCustomizer, MutableConfiguration]
+    junitTests: [PetClinicIntegrationTests, ClinicServiceTests]
+    e2eFeatures: [E2E-052..053]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/system/CacheConfiguration.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/system/CrashController.java
+    className: CrashController
+    package: org.springframework.samples.petclinic.system
+    responsibility: Intentional exception endpoint at /oups
+    dependencies: []
+    junitTests: [CrashControllerTests, CrashControllerIntegrationTests]
+    e2eFeatures: []
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/system/CrashController.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/system/WebConfiguration.java
+    className: WebConfiguration
+    package: org.springframework.samples.petclinic.system
+    responsibility: Session locale resolution and language-change interceptor
+    dependencies: [WebMvcConfigurer, LocaleChangeInterceptor]
+    junitTests: [PetClinicIntegrationTests, I18nPropertiesSyncTest]
+    e2eFeatures: [E2E-050..053]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/system/WebConfiguration.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/system/WelcomeController.java
+    className: WelcomeController
+    package: org.springframework.samples.petclinic.system
+    responsibility: Root welcome page
+    dependencies: []
+    junitTests: [WelcomeControllerTests]
+    e2eFeatures: [E2E-050..051]
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/system/WelcomeController.kt
+    status: pending
+    verification: not_run
+  - javaPath: src/main/java/org/springframework/samples/petclinic/system/package-info.java
+    className: package-info
+    package: org.springframework.samples.petclinic.system
+    responsibility: Package declaration and documentation
+    dependencies: []
+    junitTests: []
+    e2eFeatures: []
+    kotlinPath: src/main/kotlin/org/springframework/samples/petclinic/system/package-info.kt
+    status: pending
+    verification: not_run
