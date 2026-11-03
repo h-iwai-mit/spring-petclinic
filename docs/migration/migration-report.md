@@ -2,7 +2,7 @@
 
 ## Status
 
-This migration is structurally complete and the available Java/Kotlin parity checks pass. The mandatory end-to-end `mvn verify` stage is **blocked**, so the overall migration is not reported as complete and the pull request must remain Draft.
+This migration is structurally complete and the available Java/Kotlin parity checks pass. The mandatory end-to-end `mvn verify` stage is **blocked**, so the overall migration is not reported as complete. Draft PR creation was attempted but GitHub rejected the configured token with HTTP 403.
 
 - Fixed Java baseline: `2b017679254ee77030d4a798ecc034a532eb8d0b` (`origin/develop` at migration start)
 - Candidate branch: `feature/java-to-kotlin-migration`
@@ -71,7 +71,7 @@ Machine-readable local results are stored outside Git under `/workspace/migratio
 
 ## Commits and push
 
-Ten scoped commits are expected including this report:
+Eleven scoped commits are expected including the final PR-status update:
 
 1. `docs: record Java baseline and migration inventory`
 2. `build: configure Kotlin compilation for Spring Boot`
@@ -83,12 +83,19 @@ Ten scoped commits are expected including this report:
 8. `ci: verify Java and Kotlin equivalence`
 9. `docs: codify Kotlin migration agent guidance`
 10. `docs: finalize Kotlin migration report`
+11. `docs: record migration submission blocker`
 
 All completed commits are pushed without force to `origin/feature/java-to-kotlin-migration`. No commit or push was made to `develop` or `main`.
 
 ## CI and pull request
 
-The added GitHub Actions workflow checks out the fixed Java SHA and candidate separately, fixes JDK/Node/Chromium, runs Maven and deterministic E2E sequentially, requires nonempty evidence, runs the migration validators/comparators and uploads artifacts. CI status and Draft PR identifiers are added after PR creation.
+The added GitHub Actions workflow checks out the fixed Java SHA and candidate separately, fixes JDK/Node/Chromium, runs Maven and deterministic E2E sequentially, requires nonempty evidence, runs the migration validators/comparators and uploads artifacts.
+
+- Draft PR creation command: attempted with base `develop`, head `feature/java-to-kotlin-migration`, and the required title/body
+- GitHub response: `403 Forbidden` from the GraphQL API because the configured `GH_TOKEN` is invalid or lacks PR API permission
+- PR number / URL / state: unavailable; no PR was created
+- GitHub Actions result: not started because there is no pull request
+- Manual continuation URL: `https://github.com/h-iwai-mit/spring-petclinic/compare/develop...feature/java-to-kotlin-migration?expand=1`
 
 ## Agents and reusable guidance
 
@@ -101,3 +108,4 @@ Added a Java-to-Kotlin migration skill plus Kotlin migrator, migration reviewer 
 1. MySQL integration tests cannot start in this Docker VFS environment due to disk amplification; the same failure occurs on the fixed Java baseline.
 2. Consequently full `mvn verify` and `npm run migration:verify` do not exit zero locally.
 3. The PR must remain Draft until GitHub Actions (with normal overlay2 disk capacity) proves full Maven/MySQL verification and all mandatory checks pass.
+4. A credential with pull-request API permission is required to create that Draft PR; the current environment can push the feature branch but receives HTTP 403 for PR creation.
