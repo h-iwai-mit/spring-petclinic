@@ -1,0 +1,1710 @@
+{
+  "agent": "C browser",
+  "observedAt": "2026-11-03T09:39:05.122Z",
+  "smoke": "passed",
+  "pages": [
+    {
+      "pageId": "home",
+      "url": "http://localhost:8080/",
+      "headings": [
+        "Welcome"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        }
+      ],
+      "inputs": []
+    },
+    {
+      "pageId": "owner-search",
+      "url": "http://localhost:8080/owners/find",
+      "headings": [
+        "Find Owners"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        },
+        {
+          "text": "Add Owner",
+          "href": "/owners/new",
+          "title": ""
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        },
+        {
+          "text": "Find Owner",
+          "type": "submit"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "lastName",
+          "name": "lastName",
+          "value": "",
+          "required": false,
+          "min": ""
+        }
+      ]
+    },
+    {
+      "pageId": "owner-details",
+      "url": "http://localhost:8080/owners/1",
+      "headings": [
+        "Owner Information",
+        "Pets and Visits"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        },
+        {
+          "text": "Edit Owner",
+          "href": "1/edit",
+          "title": ""
+        },
+        {
+          "text": "Add New Pet",
+          "href": "1/pets/new",
+          "title": ""
+        },
+        {
+          "text": "Edit Pet",
+          "href": "1/pets/1/edit",
+          "title": ""
+        },
+        {
+          "text": "Add Visit",
+          "href": "1/pets/1/visits/new",
+          "title": ""
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        }
+      ],
+      "inputs": []
+    },
+    {
+      "pageId": "owner-form",
+      "url": "http://localhost:8080/owners/1/edit",
+      "headings": [
+        "Owner"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        },
+        {
+          "text": "Update Owner",
+          "type": "submit"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "firstName",
+          "name": "firstName",
+          "value": "George",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "lastName",
+          "name": "lastName",
+          "value": "Franklin",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "address",
+          "name": "address",
+          "value": "110 W. Liberty St.",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "city",
+          "name": "city",
+          "value": "Madison",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "telephone",
+          "name": "telephone",
+          "value": "6085551023",
+          "required": false,
+          "min": ""
+        }
+      ]
+    },
+    {
+      "pageId": "owner-update-invalid",
+      "url": "http://localhost:8080/owners/1/edit",
+      "headings": [
+        "Owner"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        },
+        {
+          "text": "Update Owner",
+          "type": "submit"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "firstName",
+          "name": "firstName",
+          "value": "George",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "lastName",
+          "name": "lastName",
+          "value": "Franklin",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "address",
+          "name": "address",
+          "value": "110 W. Liberty St.",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "city",
+          "name": "city",
+          "value": "Madison",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "telephone",
+          "name": "telephone",
+          "value": "abc",
+          "required": false,
+          "min": ""
+        }
+      ]
+    },
+    {
+      "pageId": "pet-form",
+      "url": "http://localhost:8080/owners/1/pets/new",
+      "headings": [
+        "New \n    Pet"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        },
+        {
+          "text": "Add Pet",
+          "type": "submit"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "hidden",
+          "id": "",
+          "name": "id",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "name",
+          "name": "name",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "date",
+          "id": "birthDate",
+          "name": "birthDate",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "id": "type",
+          "name": "type",
+          "value": "bird",
+          "required": false,
+          "options": [
+            {
+              "text": "bird",
+              "label": "bird",
+              "value": "bird"
+            },
+            {
+              "text": "cat",
+              "label": "cat",
+              "value": "cat"
+            },
+            {
+              "text": "dog",
+              "label": "dog",
+              "value": "dog"
+            },
+            {
+              "text": "hamster",
+              "label": "hamster",
+              "value": "hamster"
+            },
+            {
+              "text": "lizard",
+              "label": "lizard",
+              "value": "lizard"
+            },
+            {
+              "text": "snake",
+              "label": "snake",
+              "value": "snake"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pageId": "pet-empty-invalid",
+      "url": "http://localhost:8080/owners/1/pets/new",
+      "headings": [
+        "New \n    Pet"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        },
+        {
+          "text": "Add Pet",
+          "type": "submit"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "hidden",
+          "id": "",
+          "name": "id",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "name",
+          "name": "name",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "date",
+          "id": "birthDate",
+          "name": "birthDate",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "id": "type",
+          "name": "type",
+          "value": "bird",
+          "required": false,
+          "options": [
+            {
+              "text": "bird",
+              "label": "bird",
+              "value": "bird"
+            },
+            {
+              "text": "cat",
+              "label": "cat",
+              "value": "cat"
+            },
+            {
+              "text": "dog",
+              "label": "dog",
+              "value": "dog"
+            },
+            {
+              "text": "hamster",
+              "label": "hamster",
+              "value": "hamster"
+            },
+            {
+              "text": "lizard",
+              "label": "lizard",
+              "value": "lizard"
+            },
+            {
+              "text": "snake",
+              "label": "snake",
+              "value": "snake"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pageId": "pet-edit",
+      "url": "http://localhost:8080/owners/1/pets/1/edit",
+      "headings": [
+        "Pet"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        },
+        {
+          "text": "Update Pet",
+          "type": "submit"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "hidden",
+          "id": "",
+          "name": "id",
+          "value": "1",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "name",
+          "name": "name",
+          "value": "Leo",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "date",
+          "id": "birthDate",
+          "name": "birthDate",
+          "value": "2010-09-07",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "SELECT",
+          "type": "select-one",
+          "id": "type",
+          "name": "type",
+          "value": "cat",
+          "required": false,
+          "options": [
+            {
+              "text": "bird",
+              "label": "bird",
+              "value": "bird"
+            },
+            {
+              "text": "cat",
+              "label": "cat",
+              "value": "cat"
+            },
+            {
+              "text": "dog",
+              "label": "dog",
+              "value": "dog"
+            },
+            {
+              "text": "hamster",
+              "label": "hamster",
+              "value": "hamster"
+            },
+            {
+              "text": "lizard",
+              "label": "lizard",
+              "value": "lizard"
+            },
+            {
+              "text": "snake",
+              "label": "snake",
+              "value": "snake"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pageId": "visit-form",
+      "url": "http://localhost:8080/owners/1/pets/1/visits/new",
+      "headings": [
+        "New \n    Visit"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        },
+        {
+          "text": "Add Visit",
+          "type": "submit"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "date",
+          "id": "date",
+          "name": "date",
+          "value": "2026-11-04",
+          "required": false,
+          "min": "2026-11-04"
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "description",
+          "name": "description",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "hidden",
+          "id": "",
+          "name": "petId",
+          "value": "1",
+          "required": false,
+          "min": ""
+        }
+      ]
+    },
+    {
+      "pageId": "visit-empty-invalid",
+      "url": "http://localhost:8080/owners/1/pets/1/visits/new",
+      "headings": [
+        "New \n    Visit"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        },
+        {
+          "text": "Add Visit",
+          "type": "submit"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "date",
+          "id": "date",
+          "name": "date",
+          "value": "2026-11-04",
+          "required": false,
+          "min": "2026-11-04"
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "description",
+          "name": "description",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "hidden",
+          "id": "",
+          "name": "petId",
+          "value": "1",
+          "required": false,
+          "min": ""
+        }
+      ]
+    },
+    {
+      "pageId": "owner-list",
+      "url": "http://localhost:8080/owners?lastName=",
+      "headings": [
+        "Owners"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        },
+        {
+          "text": "George Franklin",
+          "href": "/owners/1",
+          "title": ""
+        },
+        {
+          "text": "Betty Davis",
+          "href": "/owners/2",
+          "title": ""
+        },
+        {
+          "text": "Eduardo Rodriquez",
+          "href": "/owners/3",
+          "title": ""
+        },
+        {
+          "text": "Harold Davis",
+          "href": "/owners/4",
+          "title": ""
+        },
+        {
+          "text": "Peter McTavish",
+          "href": "/owners/5",
+          "title": ""
+        },
+        {
+          "text": "2",
+          "href": "/owners?page=2",
+          "title": ""
+        },
+        {
+          "text": "3",
+          "href": "/owners?page=3",
+          "title": ""
+        },
+        {
+          "text": "",
+          "href": "/owners?page=2",
+          "title": "Next"
+        },
+        {
+          "text": "",
+          "href": "/owners?page=3",
+          "title": "Last"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        }
+      ],
+      "inputs": []
+    },
+    {
+      "pageId": "owner-not-found",
+      "url": "http://localhost:8080/owners?lastName=NoSuchBrowserOwner",
+      "headings": [
+        "Find Owners"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        },
+        {
+          "text": "Add Owner",
+          "href": "/owners/new",
+          "title": ""
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        },
+        {
+          "text": "Find Owner",
+          "type": "submit"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "lastName",
+          "name": "lastName",
+          "value": "NoSuchBrowserOwner",
+          "required": false,
+          "min": ""
+        }
+      ]
+    },
+    {
+      "pageId": "owner-create",
+      "url": "http://localhost:8080/owners/new",
+      "headings": [
+        "Owner"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        },
+        {
+          "text": "Add Owner",
+          "type": "submit"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "firstName",
+          "name": "firstName",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "lastName",
+          "name": "lastName",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "address",
+          "name": "address",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "city",
+          "name": "city",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "telephone",
+          "name": "telephone",
+          "value": "",
+          "required": false,
+          "min": ""
+        }
+      ]
+    },
+    {
+      "pageId": "owner-empty-invalid",
+      "url": "http://localhost:8080/owners/new",
+      "headings": [
+        "Owner"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        },
+        {
+          "text": "Add Owner",
+          "type": "submit"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "firstName",
+          "name": "firstName",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "lastName",
+          "name": "lastName",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "address",
+          "name": "address",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "city",
+          "name": "city",
+          "value": "",
+          "required": false,
+          "min": ""
+        },
+        {
+          "tag": "INPUT",
+          "type": "text",
+          "id": "telephone",
+          "name": "telephone",
+          "value": "",
+          "required": false,
+          "min": ""
+        }
+      ]
+    },
+    {
+      "pageId": "vets",
+      "url": "http://localhost:8080/vets.html",
+      "headings": [
+        "Veterinarians"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        },
+        {
+          "text": "2",
+          "href": "/vets.html?page=2",
+          "title": ""
+        },
+        {
+          "text": "",
+          "href": "/vets.html?page=2",
+          "title": "Next"
+        },
+        {
+          "text": "",
+          "href": "/vets.html?page=2",
+          "title": "Last"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        }
+      ],
+      "inputs": []
+    },
+    {
+      "pageId": "error",
+      "url": "http://localhost:8080/oups",
+      "headings": [
+        "Something happened..."
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        }
+      ],
+      "inputs": []
+    },
+    {
+      "pageId": "not-found",
+      "url": "http://localhost:8080/missing-browser-path",
+      "headings": [
+        "Something happened..."
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        }
+      ],
+      "inputs": []
+    },
+    {
+      "pageId": "home-mobile",
+      "url": "http://localhost:8080/",
+      "headings": [
+        "Welcome"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        }
+      ],
+      "inputs": []
+    },
+    {
+      "pageId": "home-mobile-expanded",
+      "url": "http://localhost:8080/",
+      "headings": [
+        "Welcome"
+      ],
+      "links": [
+        {
+          "text": "",
+          "href": "/",
+          "title": ""
+        },
+        {
+          "text": "Home",
+          "href": "/",
+          "title": "home page"
+        },
+        {
+          "text": "Find Owners",
+          "href": "/owners/find",
+          "title": "find owners"
+        },
+        {
+          "text": "Veterinarians",
+          "href": "/vets.html",
+          "title": "veterinarians"
+        },
+        {
+          "text": "Error",
+          "href": "/oups",
+          "title": "trigger a RuntimeException to see how it is handled"
+        }
+      ],
+      "buttons": [
+        {
+          "text": "",
+          "type": "button"
+        }
+      ],
+      "inputs": []
+    }
+  ],
+  "actions": [
+    {
+      "discoveryId": "BRW-001",
+      "pageId": "home",
+      "label": "Open Home",
+      "sourceRefs": [
+        "http://localhost:8080/: GET /"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-002",
+      "pageId": "owner-search",
+      "label": "Navigate Find owners",
+      "sourceRefs": [
+        "http://localhost:8080/owners/find: nav link Find owners"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-003",
+      "pageId": "owner-search",
+      "label": "Search exact owner",
+      "sourceRefs": [
+        "http://localhost:8080/owners/1: lastName Franklin + Find Owner"
+      ],
+      "classification": "target",
+      "notes": "Single result redirects to details"
+    },
+    {
+      "discoveryId": "BRW-004",
+      "pageId": "owner-details",
+      "label": "Open Edit Owner",
+      "sourceRefs": [
+        "http://localhost:8080/owners/1/edit: link Edit Owner"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-005",
+      "pageId": "owner-form",
+      "label": "Reject nonnumeric telephone",
+      "sourceRefs": [
+        "http://localhost:8080/owners/1/edit: telephone=abc; Update Owner"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-006",
+      "pageId": "owner-details",
+      "label": "Open Add New Pet",
+      "sourceRefs": [
+        "http://localhost:8080/owners/1/pets/new: link Add New Pet"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-007",
+      "pageId": "pet-form",
+      "label": "Reject empty pet name/date",
+      "sourceRefs": [
+        "http://localhost:8080/owners/1/pets/new: button Add Pet"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-008",
+      "pageId": "owner-details",
+      "label": "Open Edit Pet",
+      "sourceRefs": [
+        "http://localhost:8080/owners/1/pets/1/edit: link Edit Pet"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-009",
+      "pageId": "owner-details",
+      "label": "Open Add Visit",
+      "sourceRefs": [
+        "http://localhost:8080/owners/1/pets/1/visits/new: link Add Visit"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-010",
+      "pageId": "visit-form",
+      "label": "Reject empty visit description",
+      "sourceRefs": [
+        "http://localhost:8080/owners/1/pets/1/visits/new: button Add Visit"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-011",
+      "pageId": "owner-search",
+      "label": "Search all owners",
+      "sourceRefs": [
+        "http://localhost:8080/owners?lastName=: empty lastName; button Find Owner"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-012",
+      "pageId": "owner-search",
+      "label": "Show owner not found",
+      "sourceRefs": [
+        "http://localhost:8080/owners?lastName=NoSuchBrowserOwner: lastName=NoSuchBrowserOwner; Find Owner"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-013",
+      "pageId": "owner-search",
+      "label": "Open Add Owner",
+      "sourceRefs": [
+        "http://localhost:8080/owners/new: link Add Owner"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-014",
+      "pageId": "owner-form",
+      "label": "Reject blank owner required fields",
+      "sourceRefs": [
+        "http://localhost:8080/owners/new: button Add Owner"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-015",
+      "pageId": "vets",
+      "label": "Open veterinarians",
+      "sourceRefs": [
+        "http://localhost:8080/vets.html: GET /vets.html"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-016",
+      "pageId": "error",
+      "label": "Render intentional error",
+      "sourceRefs": [
+        "http://localhost:8080/oups: GET /oups"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-017",
+      "pageId": "error",
+      "label": "Render unknown route error",
+      "sourceRefs": [
+        "http://localhost:8080/missing-browser-path: GET /missing-browser-path"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-018",
+      "pageId": "home",
+      "label": "Expand mobile navigation",
+      "sourceRefs": [
+        "http://localhost:8080/: button Toggle navigation"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-019",
+      "pageId": "home",
+      "label": "Collapse mobile navigation",
+      "sourceRefs": [
+        "http://localhost:8080/: button Toggle navigation"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-020",
+      "pageId": "owner-list",
+      "label": "owner-list pagination Next",
+      "sourceRefs": [
+        "http://localhost:8080/owners?page=2: a[title=Next]"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-021",
+      "pageId": "owner-list",
+      "label": "owner-list pagination Last",
+      "sourceRefs": [
+        "http://localhost:8080/owners?page=3: a[title=Last]"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-022",
+      "pageId": "owner-list",
+      "label": "owner-list pagination Previous",
+      "sourceRefs": [
+        "http://localhost:8080/owners?page=2: a[title=Previous]"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-023",
+      "pageId": "owner-list",
+      "label": "owner-list pagination First",
+      "sourceRefs": [
+        "http://localhost:8080/owners?page=1: a[title=First]"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-024",
+      "pageId": "owner-list",
+      "label": "owner-list numeric page",
+      "sourceRefs": [
+        "http://localhost:8080/owners?page=2: link 2"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-025",
+      "pageId": "vets",
+      "label": "vets pagination Next",
+      "sourceRefs": [
+        "http://localhost:8080/vets.html?page=2: a[title=Next]"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-026",
+      "pageId": "vets",
+      "label": "vets pagination Previous",
+      "sourceRefs": [
+        "http://localhost:8080/vets.html?page=1: a[title=Previous]"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-027",
+      "pageId": "vets",
+      "label": "vets numeric page",
+      "sourceRefs": [
+        "http://localhost:8080/vets.html?page=2: link 2"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-028",
+      "pageId": "home",
+      "label": "Navbar brand home",
+      "sourceRefs": [
+        "http://localhost:8080/: a.navbar-brand"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-029",
+      "pageId": "home",
+      "label": "Navbar Veterinarians",
+      "sourceRefs": [
+        "http://localhost:8080/vets.html: nav link Veterinarians"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-030",
+      "pageId": "home",
+      "label": "Navbar Home",
+      "sourceRefs": [
+        "http://localhost:8080/: nav link Home"
+      ],
+      "classification": "target",
+      "notes": ""
+    },
+    {
+      "discoveryId": "BRW-031",
+      "pageId": "home",
+      "label": "Navbar Error",
+      "sourceRefs": [
+        "http://localhost:8080/oups: nav link Error"
+      ],
+      "classification": "target",
+      "notes": ""
+    }
+  ],
+  "consoleErrors": [
+    {
+      "url": "http://localhost:8080/owners/1",
+      "message": "Cannot read properties of null (reading 'style')",
+      "condition": "details page after hideMessages timer; missing alert elements"
+    }
+  ],
+  "notes": [
+    "Actions are independently observed; source discovery must reconcile unexercised success paths and invalid IDs.",
+    "Browser assertions use English default locale. Read/write validation requests used existing owner data but did not persist valid edits.",
+    "Pagination icon links lack visible text; title is stable. Mobile navbar-toggler lacks accessible name.",
+    "Observed console defect: owner details hideMessages dereferences missing success/error alerts. Application source unchanged."
+  ]
+}

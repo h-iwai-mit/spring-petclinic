@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "command": "MAVEN_OPTS='-Xmx384m' JAVA_TOOL_OPTIONS='-Xmx512m' ./mvnw verify",
+  "tests": 81,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "timestamp": "2026-11-03T09:59:10.561Z",
+  "note": "Includes H2, MySQL and PostgreSQL integration tests. Serialized with browser runs."
+}

@@ -1,0 +1,492 @@
+{
+  "agent": "Agent B: templates/static resources",
+  "pages": [
+    {
+      "pageId": "home",
+      "template": "src/main/resources/templates/welcome.html"
+    },
+    {
+      "pageId": "owner-search",
+      "template": "src/main/resources/templates/owners/findOwners.html"
+    },
+    {
+      "pageId": "owner-list",
+      "template": "src/main/resources/templates/owners/ownersList.html"
+    },
+    {
+      "pageId": "owner-details",
+      "template": "src/main/resources/templates/owners/ownerDetails.html"
+    },
+    {
+      "pageId": "owner-form",
+      "template": "src/main/resources/templates/owners/createOrUpdateOwnerForm.html"
+    },
+    {
+      "pageId": "pet-form",
+      "template": "src/main/resources/templates/pets/createOrUpdatePetForm.html"
+    },
+    {
+      "pageId": "visit-form",
+      "template": "src/main/resources/templates/pets/createOrUpdateVisitForm.html"
+    },
+    {
+      "pageId": "vets",
+      "template": "src/main/resources/templates/vets/vetList.html"
+    },
+    {
+      "pageId": "error",
+      "template": "src/main/resources/templates/error.html"
+    }
+  ],
+  "actions": [
+    {
+      "discoveryId": "TPL-nav-brand",
+      "pageId": "shared",
+      "label": "Brand home link",
+      "sourceRefs": [
+        "src/main/resources/templates/fragments/layout.html:a.navbar-brand"
+      ],
+      "classification": "target"
+    },
+    {
+      "discoveryId": "TPL-nav-home",
+      "pageId": "shared",
+      "label": "Home navigation",
+      "sourceRefs": [
+        "src/main/resources/templates/fragments/layout.html:menuItem /"
+      ],
+      "classification": "target"
+    },
+    {
+      "discoveryId": "TPL-nav-owners",
+      "pageId": "shared",
+      "label": "Find Owners navigation",
+      "sourceRefs": [
+        "src/main/resources/templates/fragments/layout.html:menuItem /owners/find"
+      ],
+      "classification": "target"
+    },
+    {
+      "discoveryId": "TPL-nav-vets",
+      "pageId": "shared",
+      "label": "Veterinarians navigation",
+      "sourceRefs": [
+        "src/main/resources/templates/fragments/layout.html:menuItem /vets.html"
+      ],
+      "classification": "target"
+    },
+    {
+      "discoveryId": "TPL-nav-error",
+      "pageId": "shared",
+      "label": "Error navigation",
+      "sourceRefs": [
+        "src/main/resources/templates/fragments/layout.html:menuItem /oups"
+      ],
+      "classification": "target"
+    },
+    {
+      "discoveryId": "TPL-nav-toggle",
+      "pageId": "shared",
+      "label": "Mobile navigation toggle",
+      "sourceRefs": [
+        "src/main/resources/templates/fragments/layout.html:button.navbar-toggler"
+      ],
+      "classification": "target",
+      "condition": "viewport below lg breakpoint"
+    },
+    {
+      "discoveryId": "TPL-search-single",
+      "pageId": "owner-search",
+      "label": "Search one owner",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/findOwners.html:form#search-owner-form input#lastName, button[type=submit]"
+      ],
+      "classification": "target",
+      "condition": "surname matches one owner"
+    },
+    {
+      "discoveryId": "TPL-search-multiple",
+      "pageId": "owner-search",
+      "label": "Search multiple owners",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/findOwners.html:form#search-owner-form input#lastName, button[type=submit]"
+      ],
+      "classification": "target",
+      "condition": "surname matches multiple owners"
+    },
+    {
+      "discoveryId": "TPL-search-all",
+      "pageId": "owner-search",
+      "label": "Empty search",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/findOwners.html:form#search-owner-form input#lastName, button[type=submit]"
+      ],
+      "classification": "target",
+      "condition": "lastName empty"
+    },
+    {
+      "discoveryId": "TPL-search-none",
+      "pageId": "owner-search",
+      "label": "Unknown surname",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/findOwners.html:form#search-owner-form input#lastName, button[type=submit]"
+      ],
+      "classification": "target",
+      "condition": "no matching owner"
+    },
+    {
+      "discoveryId": "TPL-owner-new",
+      "pageId": "owner-search",
+      "label": "Open Add Owner",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/findOwners.html:a Add Owner"
+      ],
+      "classification": "target"
+    },
+    {
+      "discoveryId": "TPL-owner-select",
+      "pageId": "owner-list",
+      "label": "Select owner name",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownersList.html:table#owners tbody a"
+      ],
+      "classification": "target"
+    },
+    {
+      "discoveryId": "TPL-owner-list-page-number",
+      "pageId": "owner-list",
+      "label": "Choose numbered page pagination",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownersList.html:pagination a Choose numbered page"
+      ],
+      "classification": "target",
+      "condition": "totalPages > 1 and currentPage != i"
+    },
+    {
+      "discoveryId": "TPL-owner-list-page-first",
+      "pageId": "owner-list",
+      "label": "First pagination",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownersList.html:pagination a First"
+      ],
+      "classification": "target",
+      "condition": "currentPage > 1"
+    },
+    {
+      "discoveryId": "TPL-owner-list-page-previous",
+      "pageId": "owner-list",
+      "label": "Previous pagination",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownersList.html:pagination a Previous"
+      ],
+      "classification": "target",
+      "condition": "currentPage > 1"
+    },
+    {
+      "discoveryId": "TPL-owner-list-page-next",
+      "pageId": "owner-list",
+      "label": "Next pagination",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownersList.html:pagination a Next"
+      ],
+      "classification": "target",
+      "condition": "currentPage < totalPages"
+    },
+    {
+      "discoveryId": "TPL-owner-list-page-last",
+      "pageId": "owner-list",
+      "label": "Last pagination",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownersList.html:pagination a Last"
+      ],
+      "classification": "target",
+      "condition": "currentPage < totalPages"
+    },
+    {
+      "discoveryId": "TPL-vets-page-number",
+      "pageId": "vets",
+      "label": "Choose numbered page pagination",
+      "sourceRefs": [
+        "src/main/resources/templates/vets/vetList.html:pagination a Choose numbered page"
+      ],
+      "classification": "target",
+      "condition": "totalPages > 1 and currentPage != i"
+    },
+    {
+      "discoveryId": "TPL-vets-page-first",
+      "pageId": "vets",
+      "label": "First pagination",
+      "sourceRefs": [
+        "src/main/resources/templates/vets/vetList.html:pagination a First"
+      ],
+      "classification": "target",
+      "condition": "currentPage > 1"
+    },
+    {
+      "discoveryId": "TPL-vets-page-previous",
+      "pageId": "vets",
+      "label": "Previous pagination",
+      "sourceRefs": [
+        "src/main/resources/templates/vets/vetList.html:pagination a Previous"
+      ],
+      "classification": "target",
+      "condition": "currentPage > 1"
+    },
+    {
+      "discoveryId": "TPL-vets-page-next",
+      "pageId": "vets",
+      "label": "Next pagination",
+      "sourceRefs": [
+        "src/main/resources/templates/vets/vetList.html:pagination a Next"
+      ],
+      "classification": "target",
+      "condition": "currentPage < totalPages"
+    },
+    {
+      "discoveryId": "TPL-vets-page-last",
+      "pageId": "vets",
+      "label": "Last pagination",
+      "sourceRefs": [
+        "src/main/resources/templates/vets/vetList.html:pagination a Last"
+      ],
+      "classification": "target",
+      "condition": "currentPage < totalPages"
+    },
+    {
+      "discoveryId": "TPL-owner-edit",
+      "pageId": "owner-details",
+      "label": "Open Edit Owner",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownerDetails.html:a Edit Owner"
+      ],
+      "classification": "target"
+    },
+    {
+      "discoveryId": "TPL-pet-new",
+      "pageId": "owner-details",
+      "label": "Open Add New Pet",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownerDetails.html:a Add New Pet"
+      ],
+      "classification": "target"
+    },
+    {
+      "discoveryId": "TPL-pet-edit",
+      "pageId": "owner-details",
+      "label": "Open Edit Pet",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownerDetails.html:a Edit Pet"
+      ],
+      "classification": "target",
+      "condition": "owner has a pet"
+    },
+    {
+      "discoveryId": "TPL-visit-new",
+      "pageId": "owner-details",
+      "label": "Open Add Visit",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownerDetails.html:a Add Visit"
+      ],
+      "classification": "target",
+      "condition": "owner has a pet"
+    },
+    {
+      "discoveryId": "TPL-owner-create",
+      "pageId": "owner-form",
+      "label": "Submit new form",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/createOrUpdateOwnerForm.html:form button[type=submit]; firstName,lastName,address,city,telephone text"
+      ],
+      "classification": "target",
+      "condition": "entity.new"
+    },
+    {
+      "discoveryId": "TPL-owner-update",
+      "pageId": "owner-form",
+      "label": "Submit edit form",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/createOrUpdateOwnerForm.html:form button[type=submit]; firstName,lastName,address,city,telephone text"
+      ],
+      "classification": "target",
+      "condition": "!entity.new"
+    },
+    {
+      "discoveryId": "TPL-owner-create-invalid",
+      "pageId": "owner-form",
+      "label": "Reject invalid new form",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/createOrUpdateOwnerForm.html:form button[type=submit]; firstName,lastName,address,city,telephone text"
+      ],
+      "classification": "target",
+      "condition": "entity.new and invalid fields"
+    },
+    {
+      "discoveryId": "TPL-owner-update-invalid",
+      "pageId": "owner-form",
+      "label": "Reject invalid edit form",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/createOrUpdateOwnerForm.html:form button[type=submit]; firstName,lastName,address,city,telephone text"
+      ],
+      "classification": "target",
+      "condition": "!entity.new and invalid fields"
+    },
+    {
+      "discoveryId": "TPL-pet-create",
+      "pageId": "pet-form",
+      "label": "Submit new form",
+      "sourceRefs": [
+        "src/main/resources/templates/pets/createOrUpdatePetForm.html:form button[type=submit]; name text,birthDate date,type select,id hidden"
+      ],
+      "classification": "target",
+      "condition": "entity.new"
+    },
+    {
+      "discoveryId": "TPL-pet-update",
+      "pageId": "pet-form",
+      "label": "Submit edit form",
+      "sourceRefs": [
+        "src/main/resources/templates/pets/createOrUpdatePetForm.html:form button[type=submit]; name text,birthDate date,type select,id hidden"
+      ],
+      "classification": "target",
+      "condition": "!entity.new"
+    },
+    {
+      "discoveryId": "TPL-pet-create-invalid",
+      "pageId": "pet-form",
+      "label": "Reject invalid new form",
+      "sourceRefs": [
+        "src/main/resources/templates/pets/createOrUpdatePetForm.html:form button[type=submit]; name text,birthDate date,type select,id hidden"
+      ],
+      "classification": "target",
+      "condition": "entity.new and invalid fields"
+    },
+    {
+      "discoveryId": "TPL-pet-update-invalid",
+      "pageId": "pet-form",
+      "label": "Reject invalid edit form",
+      "sourceRefs": [
+        "src/main/resources/templates/pets/createOrUpdatePetForm.html:form button[type=submit]; name text,birthDate date,type select,id hidden"
+      ],
+      "classification": "target",
+      "condition": "!entity.new and invalid fields"
+    },
+    {
+      "discoveryId": "TPL-visit-create",
+      "pageId": "visit-form",
+      "label": "Submit Add Visit",
+      "sourceRefs": [
+        "src/main/resources/templates/pets/createOrUpdateVisitForm.html:form; fragments/inputField.html:input[type=date] th:min"
+      ],
+      "classification": "target",
+      "condition": "valid date and description"
+    },
+    {
+      "discoveryId": "TPL-visit-invalid",
+      "pageId": "visit-form",
+      "label": "Reject invalid visit",
+      "sourceRefs": [
+        "src/main/resources/templates/pets/createOrUpdateVisitForm.html:form; fragments/inputField.html:input[type=date] th:min"
+      ],
+      "classification": "target",
+      "condition": "invalid date or blank/long description"
+    },
+    {
+      "discoveryId": "TPL-visit-past-client",
+      "pageId": "visit-form",
+      "label": "Browser blocks past visit",
+      "sourceRefs": [
+        "src/main/resources/templates/pets/createOrUpdateVisitForm.html:form; fragments/inputField.html:input[type=date] th:min"
+      ],
+      "classification": "target",
+      "condition": "date < minVisitDate"
+    },
+    {
+      "discoveryId": "TPL-flash-expiry",
+      "pageId": "owner-details",
+      "label": "Timed flash-message hiding",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownerDetails.html:script hideMessages setTimeout 3000"
+      ],
+      "classification": "target",
+      "condition": "flash exists; code dereferences absent counterpart and can throw TypeError"
+    },
+    {
+      "discoveryId": "TPL-error-404",
+      "pageId": "error",
+      "label": "Render error 404",
+      "sourceRefs": [
+        "src/main/resources/templates/error.html:th:switch status"
+      ],
+      "classification": "target",
+      "condition": "status==404"
+    },
+    {
+      "discoveryId": "TPL-error-500",
+      "pageId": "error",
+      "label": "Render error 500",
+      "sourceRefs": [
+        "src/main/resources/templates/error.html:th:switch status"
+      ],
+      "classification": "target",
+      "condition": "status==500"
+    },
+    {
+      "discoveryId": "TPL-error-general",
+      "pageId": "error",
+      "label": "Render error general",
+      "sourceRefs": [
+        "src/main/resources/templates/error.html:th:switch status"
+      ],
+      "classification": "target",
+      "condition": "other status"
+    },
+    {
+      "discoveryId": "TPL-vet-specialties",
+      "pageId": "vets",
+      "label": "Render specialties and none",
+      "sourceRefs": [
+        "src/main/resources/templates/vets/vetList.html:span th:each specialty; span th:if nrOfSpecialties==0"
+      ],
+      "classification": "target"
+    },
+    {
+      "discoveryId": "TPL-static-assets",
+      "pageId": "shared",
+      "label": "Static asset resources",
+      "sourceRefs": [
+        "src/main/resources/templates/fragments/layout.html:link,img,script"
+      ],
+      "classification": "excluded",
+      "reason": "Assets are resources, not standalone user actions; render checks cover resource use."
+    },
+    {
+      "discoveryId": "TPL-external-links",
+      "pageId": "shared",
+      "label": "External hyperlinks",
+      "sourceRefs": [
+        "src/main/resources/templates/fragments/layout.html"
+      ],
+      "classification": "excluded",
+      "reason": "No external hyperlinks in templates; namespace URL is metadata."
+    },
+    {
+      "discoveryId": "TPL-delete",
+      "pageId": "shared",
+      "label": "Deletion controls",
+      "sourceRefs": [
+        "src/main/resources/templates/owners/ownerDetails.html"
+      ],
+      "classification": "excluded",
+      "reason": "No delete control exists in templates."
+    }
+  ],
+  "notes": [
+    "Search label has no for attribute; use stable #lastName in POM.",
+    "Input fragments provide server-side field errors with .help-inline, no required attributes.",
+    "Owner form fields: firstName,lastName,address,city,telephone. Pet form: name,birthDate,type. Visit form: date,description.",
+    "No custom external JS files exist. Bootstrap collapse plus owner detail inline timer are only UI scripts.",
+    "Visit previous rows require !visit.new and therefore may not render on initial new form.",
+    "Current pagination page and boundary arrows become spans instead of clickable links.",
+    "Mobile navbar requires narrow viewport."
+  ]
+}
