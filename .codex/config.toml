@@ -1,0 +1,5 @@
+# Repository-local Codex permissions.
+# This file is loaded only when the repository is trusted.
+# Full access removes the sandbox filesystem and network restrictions.
+sandbox_mode = "danger-full-access"
+approval_policy = "never"
