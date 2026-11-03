@@ -41,7 +41,7 @@ open class Owner : Person() {
     @field:Column
     @field:NotBlank
     @field:Pattern(regexp = "\\d{10}", message = "{telephone.invalid}")
-    open var telephone: String? = null
+    open var telephone: @NotBlank @Pattern(regexp = "\\d{10}", message = "{telephone.invalid}") String? = null
 
     @field:OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     @field:JoinColumn(name = "owner_id")
