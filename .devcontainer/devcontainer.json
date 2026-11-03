@@ -1,6 +1,6 @@
 {
   "name": "Java",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
   "features": {
     "ghcr.io/devcontainers/features/java:1": {
       "version": "21-oracle",
@@ -13,11 +13,18 @@
 
   "customizations": {
     "vscode": {
-      "settings": {},
+      "settings": {
+        "java.import.gradle.java.home": "/usr/local/sdkman/candidates/java/current"
+      },
       "extensions": [
         "redhat.vscode-xml",
         "visualstudioexptteam.vscodeintellicode",
-        "vscjava.vscode-java-pack"
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack",
+        "vscjava.vscode-spring-initializr",
+        "vscjava.vscode-spring-boot-dashboard",
+        "vmware.vscode-spring-boot",
+        "mhutchie.git-graph"
       ]
     }
   },
